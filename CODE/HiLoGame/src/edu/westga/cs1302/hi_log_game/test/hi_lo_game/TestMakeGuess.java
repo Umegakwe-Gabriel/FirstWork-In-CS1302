@@ -28,17 +28,26 @@ class TestMakeGuess {
 		assertEquals(1, game.getGuessCount(), "checking guess count");
 	}
 	
+//	@Test
+//	void testCorrectGuessFirstTime() {
+//		HiLoGame game = new HiLoGame(3);
+//
+//		String result = game.makeGuess(3);
+//		
+//		assertEquals("Correct.", result, "checking result of makeGuess");
+//		assertEquals(1, game.getGuessCount(), "checking guess count");
+//		
+//	}
+	
 	@Test
 	void testCorrectGuessFirstTime() {
 		HiLoGame game = new HiLoGame(3);
-
+		
 		String result = game.makeGuess(3);
 		
-		assertEquals("Correct.", result, "checking result of makeGuess");
+		assertEquals("Correct", result, "checking result of make guess");
 		assertEquals(1, game.getGuessCount(), "checking guess count");
-		
 	}
-	
 	@Test
 	void testCorrectGuessSecondTime() {
 		HiLoGame game = new HiLoGame(3);

@@ -6,6 +6,7 @@ package edu.westga.cs1302.hi_log_game.model;
  * @version Fall 2023
  */
 public class HiLoGame {
+	public static final String CORRECT = "Correct.";
 	private int guessCount;
 	private int targetNumber;
 	
@@ -65,7 +66,7 @@ public class HiLoGame {
 		} else if (guess > this.targetNumber) {
 			result = "Too high.";
 		} else {
-			result = "Correct.";
+			result = CORRECT;
 		}
 		return result;
 	}
