@@ -1,0 +1,40 @@
+commit 5dc2e02cdace0d918928e472a2be7d6788902505
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Aug 26 11:34:15 2025 -0400
+
+    Issue 1- Poor Separation of Concerns
+    1) I made it possible to view the list of items in a Bill
+    2) I add a view Package
+    3) I added a new class that implements the functionality correctly
+
+commit 15d9f29c4c5161f19f29c1b9a56a30518184a431
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 21 12:23:23 2025 -0400
+
+    Adding Base Project
+    
+    1) Adding Lab 1 to /code/
+
+commit 2770356222dfcd41f6373554a41482e616a13836
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 21 11:21:39 2025 -0400
+
+    Adding Base Project
+    
+    1) Adding Eclipse project to /code/
+
+commit 02dc1b133a5a959c7d790896c1f003267d36ee51
+Author: Gabriel Toochukwu <gabrieltoochukwu@E-TLCNCHESNUT-L.uwg.westga.edu>
+Date:   Thu Aug 21 10:00:35 2025 -0400
+
+    Adding Base Project Structure
+    
+    1) Creating the README for the project (README.md)
+    2) Create the code directory for the project (/code/)
+    3) Create new repository
+
+commit daa7d1d8fc8a093b893db319046acfb6afcc1147
+Author: Umegakwe Toochukwu <131870372+Umegakwe-Gabriel@users.noreply.github.com>
+Date:   Tue Aug 19 10:04:37 2025 -0400
+
+    Initial commit

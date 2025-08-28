@@ -8,11 +8,11 @@ import java.util.ArrayList;
  * @version Fall 2025
  */
 public class Bill {
-	private ArrayList<BillItem> items;
-	
 	// Constants for the tax and tip rates
-	public static final double TAX_RATE = 0.10;
 	public static final double TIP_RATE = 0.20;
+	public static final double TAX_RATE = 0.10;
+	
+	private ArrayList<BillItem> items;
 	
 	/** Create a new empty Bills
 	 * 
