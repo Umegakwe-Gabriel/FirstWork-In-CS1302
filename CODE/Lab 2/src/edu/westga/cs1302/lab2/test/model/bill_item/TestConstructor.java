@@ -4,11 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TestConstructor {
+import edu.westga.cs1302.lab2.model.BillItem;
+
+public class TestConstructor {
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	public void testValidBillItem() {
+		BillItem item = new BillItem("Coffee", 2.50);
+		assertEquals("Coffee", item.getName());
+		assertEquals(2.50, item.getAmount());
 	}
 
 }
