@@ -10,19 +10,25 @@ import edu.westga.cs1302.lab2.model.Bill;
 
 public class TestAddItem {
 
-@Test
-public void testNewBillIsEmpty() {
-	Bill bill = new Bill();
-	assertTrue(bill.getItems().isEmpty());
-}
+	@Test
+	public void testNewBillIsEmpty() {
+		Bill bill = new Bill();
+		assertTrue(bill.getItems().isEmpty());
+	}
 
-@Test
-public void testAddNullItemThrowsException() {
-	Bill bill = new Bill();
-	Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-		bill.addItem(null);
-	});
-	assertEquals("items must not be null.", exception.getMessage());
-}
+	@Test
+	public void testAddNullItemThrowsException() {
+		Bill bill = new Bill();
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			bill.addItem(null);
+		});
+		assertEquals("items must not be null.", exception.getMessage());
+	}
+
+	@Test
+	public void testConstants() {
+		assertEquals(0.10, Bill.TAX_RATE);
+		assertEquals(0.20, Bill.TIP_RATE);
+	}
 
 }
