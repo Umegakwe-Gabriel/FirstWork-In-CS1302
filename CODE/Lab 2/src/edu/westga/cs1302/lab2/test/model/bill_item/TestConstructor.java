@@ -15,4 +15,11 @@ public class TestConstructor {
 		assertEquals(2.50, item.getAmount());
 	}
 
+	@Test
+	public void testNullNameThrowsException() {
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			new BillItem(null, 2.50);
+		});
+		assertEquals("name must not be null.", exception.getMessage());
+	}
 }
