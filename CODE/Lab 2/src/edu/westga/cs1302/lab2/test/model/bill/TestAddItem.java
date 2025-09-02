@@ -1,14 +1,19 @@
 package edu.westga.cs1302.lab2.test.model.bill;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+import edu.westga.cs1302.lab2.model.Bill;
 
-class TestAddItem {
+/**
+ * Test class for Bill
+ */
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+public class TestAddItem {
+
+@Test
+public void testNewBillIsEmpty() {
+	Bill bill = new Bill();
+	assertTrue(bill.getItems().isEmpty());
+}
 
 }
