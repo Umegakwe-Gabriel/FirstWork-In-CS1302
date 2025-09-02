@@ -16,4 +16,13 @@ public void testNewBillIsEmpty() {
 	assertTrue(bill.getItems().isEmpty());
 }
 
+@Test
+public void testAddNullItemThrowsException() {
+	Bill bill = new Bill();
+	Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+		bill.addItem(null);
+	});
+	assertEquals("items must not be null.", exception.getMessage());
+}
+
 }
