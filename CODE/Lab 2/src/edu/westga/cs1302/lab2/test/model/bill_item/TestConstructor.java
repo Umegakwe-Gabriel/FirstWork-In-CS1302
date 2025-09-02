@@ -31,11 +31,11 @@ public class TestConstructor {
 		assertTrue(exception.getMessage().contains("amount must be positive"));
 	}
 
-//	@Test
-//	public void testZeroAmountThrowsException() {
-//		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-//			new BillItem("Coffee", 0);
-//		});
-//		assert
-//	}
+	@Test
+	public void testZeroAmount() {
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			new BillItem("Coffee", 0);
+		});
+		assertTrue(exception.getMessage().contains("amount must be positive"));
+	}
 }
