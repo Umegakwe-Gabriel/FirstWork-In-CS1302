@@ -16,7 +16,9 @@ public class BillView {
 	 * @postcondition none
 	 * 
 	 * @return a String containing the list of bill items and total for the bill
+	 * @param bill that takes in the cost of the item
 	 */
+	
 	public String getText(Bill bill) {
 		String text = "ITEMS" + System.lineSeparator();
 		double subTotal = 0.0;
