@@ -29,14 +29,14 @@ public class TestAddItem {
 		assertEquals(5.0, items.get(0).getAmount());
 	}
 
-//	@Test
-//	public void testAddNullItem() {
-//		Bill bill = new Bill();
-//		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-//			bill.addItem(null);
-//		});
-//		assertEquals("items must not be null.", exception.getMessage());
-//	}
+	@Test
+	public void testAddNullItem() {
+		Bill bill = new Bill();
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			bill.addItem(null);
+		});
+		assertEquals("item must not be null.", exception.getMessage());
+	}
 
 	@Test
 	public void testConstants() {
