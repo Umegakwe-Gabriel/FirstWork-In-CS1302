@@ -19,6 +19,20 @@ class TestGetText {
     }
 	
 	@Test
+	public void testEmptyBill() {
+		Bill bill = new Bill();
+		BillView view = new BillView();
+		
+		String text = view.getText(bill);
+		
+		assertTrue(text.contains("ITEMS"));
+		assertTrue(text.contains("SUBTOTAL - $0.0"));
+		assertTrue(text.contains("TAX - $0.0"));
+		assertTrue(text.contains("TIP - $0.0"));
+		assertTrue(text.contains("TOTAL - $0.0"));
+	}
+	
+	@Test
 	public void testBillWithSingleItem() {
 		Bill bill = new Bill();
 		bill.addItem(new BillItem("Coffee", 10.0));
