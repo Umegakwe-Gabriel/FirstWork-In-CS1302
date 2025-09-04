@@ -20,6 +20,9 @@ public class BillView {
 	 */
 	
 	public String getText(Bill bill) {
+		if (bill == null) {
+		    throw new IllegalArgumentException("bill must not be null.");
+		}
 		String text = "ITEMS" + System.lineSeparator();
 		double subTotal = 0.0;
 		for (BillItem item : bill.getItems()) {

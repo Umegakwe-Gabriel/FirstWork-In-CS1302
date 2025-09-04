@@ -9,14 +9,14 @@ import edu.westga.cs1302.lab2.model.BillItem;
 import edu.westga.cs1302.lab2.view.BillView;
 
 class TestGetText {
-//	@Test
-//	public void testNullBill() {
-//        BillView view = new BillView();
-//        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-//            view.getText(null);
-//        });
-//        assertEquals("bill must not be null.", exception.getMessage());
-//    }
+	@Test
+	public void testNullBill() {
+        BillView view = new BillView();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            view.getText(null);
+        });
+        assertEquals("bill must not be null.", exception.getMessage());
+    }
 	
 	@Test
 	public void testBillWithSingleItem() {
