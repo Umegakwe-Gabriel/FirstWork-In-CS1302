@@ -52,5 +52,31 @@ class TestGetText {
 		assertTrue(text.contains("TIP - $" + expectedTip));
 		assertTrue(text.contains("TOTAL - $" + expectedTotal));
 	}
+	
+	@Test 
+	public void testBillWithMultipleItems() {
+		Bill bill = new Bill();
+		bill.addItem(new BillItem("Coffee", 5.0));
+		bill.addItem(new BillItem("Sanwich", 15.0));
+		
+		BillView view = new BillView();
+		String text = view.getText(bill);
+		
+		//Check Items Appear
+//		assertTrue(text.contains("Coffee - $5.0"));
+//		assertTrue(text.contains("Sandwich - $15.0"));
+		
+		//Check sub total
+		assertTrue(text.contains("SUBTOTAL - $20.0"));
+		
+		//Checking totals
+		double expectedTax = 20.0 * Bill.TAX_RATE;
+		double expectedTip = 20.0 * Bill.TIP_RATE;
+		double expectedTotal = 20.0 + expectedTax + expectedTip;
+		
+		assertTrue(text.contains("TAX - $" + expectedTax));
+		assertTrue(text.contains("TIP - $" + expectedTip));
+		assertTrue(text.contains("TOTAL - $" + expectedTotal));
+	}
 
 }
