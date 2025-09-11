@@ -1,0 +1,157 @@
+commit 96474e097e8697c054ec8df3e1ea6c2057a95145
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 11 07:02:16 2025 -0400
+
+    commit after realization and correction of the Lab3 bill code
+
+commit edda52b89bcd7bffc9f91f1644af8741024eedb7
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 10:46:13 2025 -0400
+
+    setting up Javafv sample Lab 3
+    Adding Bill model class to java sample Fx project
+    Renamed project and base package
+
+commit 295669ffa25b0866abf3c26554d9cf240a6b3801
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 07:23:49 2025 -0400
+
+    added test for adding null item
+
+commit c1fbbd3baedba1fca0749efcecf352e166496715
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 07:19:36 2025 -0400
+
+    test bill with multiple items
+
+commit bfd8dc464be352bf3f7d06ff25d5a70afd02a904
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 07:03:32 2025 -0400
+
+    added a test for empty bill
+
+commit 95d9204a5d375771abeeec4318efb6696c08859a
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 06:56:53 2025 -0400
+
+    added test for null bill to the for the test get Text class
+
+commit 4f1150f2fcea27d34e3a76574129b1ea93a56f23
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 06:45:14 2025 -0400
+
+    Started testing for the get text and the view item package
+
+commit 6056276f358fb757d6270468433afc49f889eb3d
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 12:19:12 2025 -0400
+
+    Made some checkstyle corrections on the Bill.java and BillItem.java
+    2) Commented the code for test for adding null item because I did not know why it was not running
+
+commit a84a20f61b4dd02ec126a71842f79b48f0c92843
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 12:06:54 2025 -0400
+
+    Adding test for adding a valid item
+
+commit 7c7b39a053a1aef9aadb4d4516212303ae38bf59
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:53:39 2025 -0400
+
+    Adding test for Zero Amount
+
+commit 612421ec9e764c4f348d38f77b5ee777370c0680
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:47:47 2025 -0400
+
+    adding the test for negative amount
+
+commit 34dcf750321cbd01c385088c9342073fb87027b5
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:35:33 2025 -0400
+
+    Added the test for when name is null and throw exception
+
+commit 4eb6370b1b9212a35586a707f7bc3fca9e07d6b9
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:31:25 2025 -0400
+
+    added test for valid BillItem
+
+commit 11cc5b2bcdeb3bca8db9e10b71e2595654f55836
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:23:30 2025 -0400
+
+    Added test constants
+
+commit ced6270899970706589a3103aea58b6872ce4412
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:19:08 2025 -0400
+
+    test add null item throws exception
+
+commit c177a77e938d1275e46cd8b29d4169846077c475
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:08:25 2025 -0400
+
+    test for when the new bill is Empty
+
+commit dc02967076ceb782022c61ccb1d1b24561e2c487
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 09:33:55 2025 -0400
+
+    Adding test files
+
+commit 58b7dc8a4ff6e7fba75b2f628044ec1081577281
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 28 12:13:52 2025 -0400
+
+    Making changes from the zip file to the unzipped Lab 2
+
+commit 7970257c3982761688f276c6ddd2de798990a0b1
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 28 12:10:19 2025 -0400
+
+    Adding my Lab 2 to work on it
+
+commit 5dc2e02cdace0d918928e472a2be7d6788902505
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Aug 26 11:34:15 2025 -0400
+
+    Issue 1- Poor Separation of Concerns
+    1) I made it possible to view the list of items in a Bill
+    2) I add a view Package
+    3) I added a new class that implements the functionality correctly
+
+commit 15d9f29c4c5161f19f29c1b9a56a30518184a431
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 21 12:23:23 2025 -0400
+
+    Adding Base Project
+    
+    1) Adding Lab 1 to /code/
+
+commit 2770356222dfcd41f6373554a41482e616a13836
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 21 11:21:39 2025 -0400
+
+    Adding Base Project
+    
+    1) Adding Eclipse project to /code/
+
+commit 02dc1b133a5a959c7d790896c1f003267d36ee51
+Author: Gabriel Toochukwu <gabrieltoochukwu@E-TLCNCHESNUT-L.uwg.westga.edu>
+Date:   Thu Aug 21 10:00:35 2025 -0400
+
+    Adding Base Project Structure
+    
+    1) Creating the README for the project (README.md)
+    2) Create the code directory for the project (/code/)
+    3) Create new repository
+
+commit daa7d1d8fc8a093b893db319046acfb6afcc1147
+Author: Umegakwe Toochukwu <131870372+Umegakwe-Gabriel@users.noreply.github.com>
+Date:   Tue Aug 19 10:04:37 2025 -0400
+
+    Initial commit
