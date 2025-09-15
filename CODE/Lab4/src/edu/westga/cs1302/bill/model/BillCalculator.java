@@ -26,9 +26,21 @@ public final class BillCalculator {
 		return subtotal;
 	}
 	
-	// Calculates the task amount from the array of BillItem objects.	`
-	public static double claculatesTax(BillItem[] items) {
+	// Calculates the tax amount from the array of BillItem objects.	`
+	public static double calculateTax(BillItem[] items) {
 		double subtotal = calculateSubtotal(items);
 		return subtotal * Bill.TAX_RATE;
 	}
+	
+	//Calculate the tip amount from the array of BillItems objects
+	public static double calculateTip(BillItem[] items) {
+		double subTotal = calculateSubtotal(items);
+		return subTotal * Bill.TIP_RATE;
+	}
+	
+	// Calculates the total from the array of BillItem objects.
+    public static double calculateTotal(BillItem[] items) {
+        double subtotal = calculateSubtotal(items);
+        return subtotal + calculateTax(items) + calculateTip(items);
+    }
 }
