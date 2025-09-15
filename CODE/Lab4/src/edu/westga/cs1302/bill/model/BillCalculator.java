@@ -8,7 +8,7 @@ package edu.westga.cs1302.bill.model;
  * @version Fall 2025
  */
 
-public class BillCalculator {
+public final class BillCalculator {
 	
 	//Private constructor to prevent instantiation
 	private BillCalculator() {
@@ -19,10 +19,16 @@ public class BillCalculator {
 	public static double calculateSubtotal(BillItem[] items) {
 		double subtotal = 0.0;
 		for (BillItem item : items) {
-			if(item != null) {
+			if (item != null) {
 				subtotal += item.getAmount();
 			}
 		}
 		return subtotal;
+	}
+	
+	// Calculates the task amount from the array of BillItem objects.	`
+	public static double claculatesTax(BillItem[] items) {
+		double subtotal = calculateSubtotal(items);
+		return subtotal * Bill.TAX_RATE;
 	}
 }
