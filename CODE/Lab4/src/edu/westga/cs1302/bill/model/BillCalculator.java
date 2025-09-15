@@ -15,7 +15,12 @@ public final class BillCalculator {
 		
 	}
 	
-	//Calculates the sub-total from the array of the BillItems objects
+	/** 
+	 * Calculates the sub-total of the bill items.
+	 * 
+	 * @param items the array of the BillItem objects
+	 * @return the sub-total of the bill items.
+	 */
 	public static double calculateSubtotal(BillItem[] items) {
 		double subtotal = 0.0;
 		for (BillItem item : items) {
@@ -26,20 +31,35 @@ public final class BillCalculator {
 		return subtotal;
 	}
 	
-	// Calculates the tax amount from the array of BillItem objects.	`
+	/**
+     * Calculates the tax amount from the array of BillItem objects.
+     *
+     * @param items the array of BillItem objects
+     * @return the calculated tax
+     */
 	public static double calculateTax(BillItem[] items) {
 		double subtotal = calculateSubtotal(items);
 		return subtotal * Bill.TAX_RATE;
 	}
 	
-	//Calculate the tip amount from the array of BillItems objects
+	/**
+     * Calculates the tip amount from the array of BillItem objects.
+     *
+     * @param items the array of BillItem objects
+     * @return the calculated tip
+     */
 	public static double calculateTip(BillItem[] items) {
 		double subTotal = calculateSubtotal(items);
 		return subTotal * Bill.TIP_RATE;
 	}
 	
-	// Calculates the total from the array of BillItem objects.
-    public static double calculateTotal(BillItem[] items) {
+	/**
+     * Calculates the total from the array of BillItem objects.
+     *
+     * @param items the array of BillItem objects
+     * @return the calculated total
+     */
+	public static double calculateTotal(BillItem[] items) {
         double subtotal = calculateSubtotal(items);
         return subtotal + calculateTax(items) + calculateTip(items);
     }
