@@ -34,13 +34,14 @@ public class MainWindow {
 	 * Perform any needed initialization of UI components and underlying objects.
 	 */
 	public void initialize() {
-//		priorityComboBox.getItems().addAll(1, 2, 3, 4, 5);
+//		
 	}
 	
 	@FXML
 	private void handlePriorityChange() {
-		String selected = priorityComboBox.getValue();
-		System.out.println("Priority selected: " + selected);
+//		String selected = priorityComboBox.getValue();
+//		System.out.println("Priority selected: " + selected);
+		priorityComboBox.getItems().addAll("High", "Meduim", "Low");
 	}
 	
 	/**
