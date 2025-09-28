@@ -24,7 +24,7 @@ public class MainWindow {
 
 	/** Combo box for selecting task priority. */
 	@FXML
-	private ComboBox<String> priorityComboBox;
+	private ComboBox<Integer> priorityComboBox;
 
 	/** List view to display all tasks. */
 	@FXML
@@ -41,7 +41,7 @@ public class MainWindow {
 	private void handlePriorityChange() {
 //		String selected = priorityComboBox.getValue();
 //		System.out.println("Priority selected: " + selected);
-		priorityComboBox.getItems().addAll("High", "Meduim", "Low");
+		priorityComboBox.getItems().addAll(1, 2, 3, 4, 5);
 	}
 	
 	/**

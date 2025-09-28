@@ -1,45 +1,48 @@
 package edu.westga.cs1302.project1.model;
 
-import java.time.LocalDate;
-import java.util.UUID;
-
 public class Task {
-	private final UUID id;
 	private String name;
 	private String description;
 	private int priority; // e.g., 1 = low, 5 = high
 	private boolean  completed;
 	
-	//constructor for new tasks
-	public Task (String name, String description, int priority) {
-		this.id = UUID.randomUUID();
+	/**
+	 * Constructs a Task with the specified name, description, and priority.
+	 * 
+	 * @param name the name of the task(cannot be null or blank)
+	 * @param description the description of the task
+	 * @param priority the priority of the task (1-5)
+	 * @throws IllegalArgumentException if the name is null/blank or priority is invalid
+	 */
+	public Task(String name, String description, int priority) {
+		if (name == null || name.isBlank()) {
+			throw new IllegalArgumentException("Task name cannot be empty");
+		}
+		if (priority < 1 || priority > 5) {
+			throw new IllegalArgumentException("Priority must be between 1 and 5");
+		}
 		this.name = name;
-		this.description = description;
+		this.description = description == null ? "" : description;
 		this.priority = priority;
-		this.completed = false;
 	}
 	
-	//Constructor for when loading from persistence
-	public Task(UUID id, String name, String description, int priority, boolean completed) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.priority = priority;
-		this.completed = completed;
-	}
-	
-	public UUID getID() {
-		return id;
-	}
-	
+	/**
+	 * @return the name of the task
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * @return the description of the task
+	 */
 	public String getDescription() {
 		return description;
 	}
 	
+	/**
+	 * @return the priority of the task(1-5)
+	 */
 	public int getPrioirty() {
 		return priority;
 	}
@@ -52,8 +55,12 @@ public class Task {
 		this.completed = completed;
 	}
 	
+	/**
+	 * @return the task name as the string representation
+	 */
 	@Override
 	public String toString() {
-		return String.format("%s (priority: %d)", name, priority);
+		//return String.format("%s (priority: %d)", name, priority);
+		return name;
 	}
 }
