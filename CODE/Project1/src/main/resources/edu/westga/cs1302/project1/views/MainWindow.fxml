@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -16,12 +17,15 @@
    <children>
       <AnchorPane prefHeight="818.0" prefWidth="517.0">
          <children>
-            <Button layoutX="204.0" layoutY="224.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="52.0" text="Button" />
-            <TextField fx:id="title" layoutX="69.0" layoutY="177.0" prefHeight="25.0" prefWidth="347.0" />
-            <Label layoutX="218.0" layoutY="134.0" text="Title" />
-            <ListView layoutX="71.0" layoutY="288.0" onMouseClicked="#selectMovie" prefHeight="223.0" prefWidth="347.0" />
-            <Label layoutX="216.0" layoutY="540.0" text="Favorite" />
-            <ComboBox fx:id="favoriteMovieSelector" layoutX="155.0" layoutY="568.0" onAction="#popUpFavorite" prefWidth="150.0" />
+            <TextField id="taskNameField" fx:id="taskNameField" layoutX="68.0" layoutY="119.0" prefHeight="25.0" prefWidth="347.0" promptText="Task Name" />
+            <Label layoutX="210.0" layoutY="82.0" text="Task Name:" />
+            <ComboBox fx:id="priorityComboBox" layoutX="160.0" layoutY="345.0" onAction="#handlePriorityChange" prefWidth="150.0" promptText="Priority" />
+            <Label layoutX="205.0" layoutY="170.0" text="Description" />
+            <TextArea layoutX="86.0" layoutY="200.0" prefHeight="91.0" prefWidth="311.0" promptText="Task Description" />
+            <Label layoutX="215.0" layoutY="314.0" text="Priority" />
+            <Button layoutX="202.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleAddTask" text="Add Task" />
+            <Label layoutX="198.0" layoutY="451.0" text="List of Tasks" />
+            <ListView layoutX="125.0" layoutY="485.0" prefHeight="200.0" prefWidth="221.0" />
          </children>
       </AnchorPane>
    </children>

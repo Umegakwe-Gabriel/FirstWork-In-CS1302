@@ -4,12 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -20,47 +16,38 @@ import javafx.scene.input.MouseEvent;
 public class MainWindow {
 
 	@FXML
-	private ComboBox<String> favoriteMovieSelector;
-	
-	@FXML
-	private Button addTaskButton;
-	
-	@FXML
-	private ListView<String> movieList;
-	
+	private TextField taskNameField;
+
+	/** Text area for entering the task description. */
 	@FXML
 	private TextArea taskDescriptionArea;
 
+	/** Combo box for selecting task priority. */
 	@FXML
-	private TextField title;
-	
-	@FXML
-	void addTitle(ActionEvent event) {
-		this.movieList.getItems().add(this.title.getText());
-		this.favoriteMovieSelector.getItems().add( this.title.getText());
-	}
+	private ComboBox<String> priorityComboBox;
 
+	/** List view to display all tasks. */
 	@FXML
-	void popUpFavorite(ActionEvent event) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setContentText( this.favoriteMovieSelector.getValue());
-		alert.show();
-	}
-
-	@FXML
-	void selectMovie(MouseEvent event) {
-		String selectedTitle = this.movieList.getSelectionModel().getSelectedItem();
-		if(selectedTitle != null) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setContentText(selectedTitle);
-			alert.show();
-		}
-	}
+	private ListView<String> taskListView;
 
 	/**
 	 * Perform any needed initialization of UI components and underlying objects.
 	 */
 	public void initialize() {
-
+//		priorityComboBox.getItems().addAll(1, 2, 3, 4, 5);
+	}
+	
+	@FXML
+	private void handlePriorityChange() {
+		String selected = priorityComboBox.getValue();
+		System.out.println("Priority selected: " + selected);
+	}
+	
+	/**
+	 * Handles the Add Task Button
+	 */
+	@FXML
+	private void handleAddTask() {
+		System.out.println("Add Task Button Clicked");
 	}
 }
