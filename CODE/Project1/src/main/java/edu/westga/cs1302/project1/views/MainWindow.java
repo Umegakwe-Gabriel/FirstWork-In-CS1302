@@ -32,7 +32,7 @@ public class MainWindow {
 	 * Combo box for selecting task priority. 
 	*/
 	@FXML
-	private ComboBox<Integer> priorityComboBox;
+	private ComboBox<Integer> displayPriorityField;
 
 	/** 
 	 * List view to display all tasks. 
@@ -46,7 +46,7 @@ public class MainWindow {
 	 * Perform any needed initialization of UI components and underlying objects.
 	 */
 	public void initialize() {
-		priorityComboBox.getItems().addAll(1, 2, 3, 4, 5);
+		displayPriorityField.getItems().addAll(1, 2, 3, 4, 5);
 		taskListView.setItems(tasks);
 	}
 	
@@ -54,7 +54,7 @@ public class MainWindow {
 	private void handlePriorityChange() {
 //		String selected = priorityComboBox.getValue();
 //		System.out.println("Priority selected: " + selected);
-		priorityComboBox.getItems().addAll(1, 2, 3, 4, 5);
+		displayPriorityField.getItems().addAll(1, 2, 3, 4, 5);
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public class MainWindow {
 		try {
 			String name = taskNameField.getText();
 			String description = taskDescriptionArea.getText();
-			Integer priority = priorityComboBox.getValue();
+			Integer priority = displayPriorityField.getValue();
 			
 			if (priority == null) {
 				showAlert("Validation Error", "Please select a priority");
