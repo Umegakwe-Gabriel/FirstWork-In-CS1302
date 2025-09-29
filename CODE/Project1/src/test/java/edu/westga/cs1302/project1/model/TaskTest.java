@@ -46,6 +46,29 @@ public class TaskTest {
             new Task("Chores", "Clean the house", 6);
         });
     }
+    
+    @Test
+    void testSetPriorityUpdatesPriority() {
+        Task task = new Task("Chores", "Clean kitchen", 3);
+        task.setPriority(5);
+        assertEquals(5, task.getPriority());
+    }
+    
+    @Test
+    void testSetPriorityTooLowThrowsException() {
+        Task task = new Task("Homework", "Finish math problems", 3);
+        assertThrows(IllegalArgumentException.class, () -> {
+            task.setPriority(0);
+        });
+    }
+    
+    @Test
+    void testSetPriorityTooHighThrowsException() {
+        Task task = new Task("Homework", "Finish math problems", 3);
+        assertThrows(IllegalArgumentException.class, () -> {
+            task.setPriority(6);
+        });
+    }
 
     @Test
     void testUpdatesDescriptionValid() {

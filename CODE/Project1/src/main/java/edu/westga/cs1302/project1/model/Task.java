@@ -10,19 +10,18 @@ public class Task {
 
     private final String name;
     private String description;
-    private final int priority;
+    private int priority;
 
     /**
      * Creates a new Task.
-     * 
+     *
      * @precondition name != null && !name.isBlank()
      * @precondition description != null
-     * @precondition priority > 0
-     * @postcondition new task is created
-     * 
-     * @param name the task name
-     * @param description the task description
-     * @param priority the task priority
+     * @precondition priority >= 1 && priority <= 5
+     *
+     * @param name        the name of the task
+     * @param description the description of the task
+     * @param priority    the priority (1–5)
      */
     public Task(String name, String description, int priority) {
         if (name == null || name.isBlank()) {
@@ -31,8 +30,8 @@ public class Task {
         if (description == null) {
             throw new IllegalArgumentException("Task description cannot be null");
         }
-        if (priority <= 0) {
-            throw new IllegalArgumentException("Priority must be greater than zero");
+        if (priority < 1 || priority > 5) {
+            throw new IllegalArgumentException("Priority must be between 1 and 5");
         }
 
         this.name = name;
@@ -66,9 +65,23 @@ public class Task {
         }
         this.description = newDescription;
     }
+    
+    /**
+     * Updates the priority of this task.
+     *
+     * @precondition newPriority >= 1 && newPriority <= 5
+     * @param newPriority the updated priority
+     */
+    public void setPriority(int newPriority) {
+        if (newPriority < 1 || newPriority > 5) {
+            throw new IllegalArgumentException("Priority must be between 1 and 5");
+        }
+        this.priority = newPriority;
+    }
+
 
     @Override
     public String toString() {
-        return this.name;
+        return this.name + " (Priority: " + this.priority + ")";
     }
 }
