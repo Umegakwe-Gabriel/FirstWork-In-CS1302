@@ -33,6 +33,22 @@ public class TaskManager {
         }
         this.tasks.add(task);
     }
+    
+    /**
+     * Remove a task from the manager
+     * 
+     * 
+     * @precondition task != null
+     * @postcondition !getTasks().contains(task)
+     * 
+     * @param task the task to remove
+     */
+    public void removeTask(Task task) {
+    	if (task == null) {
+    		throw new IllegalArgumentException("Task cannot be null");
+    	}
+    	this.tasks.remove(task);
+    }
 
     /**
      * Returns the observable list of tasks.
