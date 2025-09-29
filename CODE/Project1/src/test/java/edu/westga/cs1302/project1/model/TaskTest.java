@@ -48,17 +48,17 @@ public class TaskTest {
     }
 
     @Test
-    void testSetDescriptionUpdatesDescription() {
+    void testUpdatesDescriptionValid() {
         Task task = new Task("Study", "Review notes", 2);
-        task.setDescription("Review chapters 1-3");
+        task.updateDescription("Review chapters 1-3");
         assertEquals("Review chapters 1-3", task.getDescription());
     }
 
     @Test
-    void testSetDescriptionWithNullThrowsException() {
-        Task task = new Task("Study", "Review notes", 2);
+    void testUpdateDescriptionToNullThrowsException() {
+        Task task = new Task("Homework", "Math exercises", 1);
         assertThrows(IllegalArgumentException.class, () -> {
-            task.setDescription(null);
+            task.updateDescription(null);
         });
     }
 

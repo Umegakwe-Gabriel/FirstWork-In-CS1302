@@ -14,14 +14,15 @@ public class Task {
 
     /**
      * Creates a new Task.
-     *
+     * 
      * @precondition name != null && !name.isBlank()
      * @precondition description != null
-     * @precondition priority >= 1 && priority <= 5
-     *
-     * @param name        the name of the task
-     * @param description the description of the task
-     * @param priority    the priority (1–5)
+     * @precondition priority > 0
+     * @postcondition new task is created
+     * 
+     * @param name the task name
+     * @param description the task description
+     * @param priority the task priority
      */
     public Task(String name, String description, int priority) {
         if (name == null || name.isBlank()) {
@@ -30,8 +31,8 @@ public class Task {
         if (description == null) {
             throw new IllegalArgumentException("Task description cannot be null");
         }
-        if (priority < 1 || priority > 5) {
-            throw new IllegalArgumentException("Priority must be between 1 and 5");
+        if (priority <= 0) {
+            throw new IllegalArgumentException("Priority must be greater than zero");
         }
 
         this.name = name;
@@ -55,9 +56,11 @@ public class Task {
      * Updates the description of this task.
      *
      * @precondition newDescription != null
-     * @param newDescription the updated description
+     * @postcondition getDescription() == newDescription
+     * 
+     * @param newDescription the new task description
      */
-    public void setDescription(String newDescription) {
+    public void updateDescription(String newDescription) {
         if (newDescription == null) {
             throw new IllegalArgumentException("Description cannot be null");
         }
@@ -66,6 +69,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return this.name + " (Priority: " + this.priority + ")";
+        return this.name;
     }
 }
