@@ -3,7 +3,6 @@ package edu.westga.cs1302.project1.views;
 import edu.westga.cs1302.project1.model.Task;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -32,7 +31,7 @@ public class MainWindow {
 	 * Combo box for selecting task priority. 
 	*/
 	@FXML
-	private ComboBox<Integer> displayPriorityField;
+	private ComboBox<String> priorityComboBox;
 
 	/** 
 	 * List view to display all tasks. 
@@ -40,21 +39,48 @@ public class MainWindow {
 	@FXML
 	private ListView<Task> taskListView;
 	
+	@FXML
+	private TextArea selectedTaskDescriptionArea;
+	
+	@FXML
+	private TextField selectedTaskPriorityField;
+	
 	private final ObservableList<Task> tasks = FXCollections.observableArrayList();
 
 	/**
-	 * Perform any needed initialization of UI components and underlying objects.
+	 * Initializes the MainWindow
+	 * 
+	 * @precondition none 
+	 * @postcondition the priorityComboBox is populated, 
+	 *                the task list is observable, and
+	 *                task selection updates display fields.
 	 */
+	@FXML
 	public void initialize() {
-		displayPriorityField.getItems().addAll(1, 2, 3, 4, 5);
+		ObservableList<String> priorities = FXCollections.observableArrayList("High", "Meduim", "Low");
+		this.priorityComboBox.setItems(priorities);
+		
+		//Ensure the ListView is backed by an observable list
 		taskListView.setItems(tasks);
+		
+		//Listener for task selection
+		this.taskListView.getSelectionModel().selectedItemProperty().addListener(
+			(observable, oldTask, newTask) -> {
+				if (newTask != null) {
+					this.selectedTaskDescriptionArea.setText(newTask.getDescription());
+					this.selectedTaskPriorityField.setText(newTask.getPrioirty());
+				} else {
+					this.selectedTaskDescriptionArea.clear();
+					this.selectedTaskPriorityField.clear();
+				}
+			}
+				);
 	}
 	
 	@FXML
 	private void handlePriorityChange() {
 //		String selected = priorityComboBox.getValue();
 //		System.out.println("Priority selected: " + selected);
-		displayPriorityField.getItems().addAll(1, 2, 3, 4, 5);
 	}
 	
 	/**
@@ -66,7 +92,7 @@ public class MainWindow {
 		try {
 			String name = taskNameField.getText();
 			String description = taskDescriptionArea.getText();
-			Integer priority = displayPriorityField.getValue();
+			String priority = priorityComboBox.getValue();
 			
 			if (priority == null) {
 				showAlert("Validation Error", "Please select a priority");

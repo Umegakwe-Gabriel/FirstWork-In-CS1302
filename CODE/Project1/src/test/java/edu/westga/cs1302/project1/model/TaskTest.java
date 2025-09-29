@@ -8,37 +8,61 @@ class TaskTest {
 
 	@Test
 	public void testValidTaskCreation() {
-		Task task = new Task("Homework", "Math exercises", 3);
+		Task task = new Task("Homework", "Math exercises", "High");
 		
 		assertEquals("Homework", task.getName());
 		assertEquals("Math exercises", task.getDescription());
-		assertEquals(3, task.getPrioirty());
+		assertEquals("High", task.getPrioirty());
 	}
 	
 	@Test
 	public void testNullNameThrowsException() {
 		assertThrows(IllegalArgumentException.class, 
-				() -> new Task(null, "desc", 2) );
+				() -> new Task(null, "desc", "Meduim") );
 	}
 	
 	@Test
 	public void testBlankNameThrowsException() {
 		assertThrows(IllegalArgumentException.class, 
-				() -> new Task("  ", "description", 3));
+				() -> new Task("  ", "description", "Low"));
 	}
 	
 	@Test
-	public void testInvalidPriorityThrowsException() {
+	public void testDescriptionCannotBeNull() {
 		assertThrows(IllegalArgumentException.class, 
-				() -> new Task("Task", "description", 0));
-		
+				() -> new Task("Homework", null, "Meduim") );
+	}
+	
+	@Test
+    void testSetDescriptionValid() {
+        Task task = new Task("Homework", "Old description", "Low");
+        task.setDescription("New description");
+        assertEquals("New description", task.getDescription());
+    }
+	
+	@Test
+    void testSetDescriptionNull() {
+        Task task = new Task("Homework", "Old description", "Low");
+        assertThrows(IllegalArgumentException.class, () -> {
+            task.setDescription(null);
+        });
+    }
+	
+	@Test
+	public void testPriorityCannotBeNull() {
 		assertThrows(IllegalArgumentException.class, 
-				() -> new Task("Task2", "description1", 6));
+				() -> new Task("Task", "description", null));
+	}
+	
+	@Test
+	public void testPriorityCannotBeBlank() {
+		assertThrows(IllegalArgumentException.class, 
+				() -> new Task("Task2", "description1", " "));
 	}
 	
 	@Test 
 	void testToStringReturnsName() {
-		Task task = new Task("Read Book", "Chapter 1", 2);
+		Task task = new Task("Read Book", "Chapter 1", "Low");
 		assertEquals("Read Book", task.toString());
 	}
 }

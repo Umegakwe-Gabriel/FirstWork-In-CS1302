@@ -1,9 +1,9 @@
 package edu.westga.cs1302.project1.model;
 
 public class Task {
-	private String name;
+	private final String name;
 	private String description;
-	private int priority; // e.g., 1 = low, 5 = high
+	private final String priority; // e.g., 1 = low, 5 = high
 	private boolean  completed;
 	
 	/**
@@ -11,15 +11,25 @@ public class Task {
 	 * 
 	 * @param name the name of the task(cannot be null or blank)
 	 * @param description the description of the task
-	 * @param priority the priority of the task (1-5)
+	 * @param priority the priority of the task ("High", "Medium", "Low")
+	 * 
+	 * @precondition name != null && !name.isBlank()
+	 *                    description != null
+	 *                    priority != null && !priority.isBlank()
+	 *  @postcondition getName() == name &&
+	 *                    getDescription == description
+	 *                    getPriority == priority
 	 * @throws IllegalArgumentException if the name is null/blank or priority is invalid
 	 */
-	public Task(String name, String description, int priority) {
+	public Task(String name, String description, String priority) {
 		if (name == null || name.isBlank()) {
 			throw new IllegalArgumentException("Task name cannot be empty");
 		}
-		if (priority < 1 || priority > 5) {
-			throw new IllegalArgumentException("Priority must be between 1 and 5");
+		if (priority == null || priority.isBlank()) {
+			throw new IllegalArgumentException("Priority cannot be null or blank");
+		}
+		if (description == null) {
+			throw new IllegalArgumentException("Description cannot be null");
 		}
 		this.name = name;
 		this.description = description == null ? "" : description;
@@ -37,14 +47,31 @@ public class Task {
 	 * @return the description of the task
 	 */
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 	
 	/**
-	 * @return the priority of the task(1-5)
-	 */
-	public int getPrioirty() {
-		return priority;
+     * Updates the description of the task.
+     *
+     * @precondition description != null
+     * @postcondition getDescription() == description
+     *
+     * @param description the new description
+     */
+	public void setDescription(String description) {
+		if (description == null) {
+			throw new IllegalArgumentException("Descriptio cannot be null");
+		}
+		this.description = description;
+	}
+	
+	/**
+	 * Gets the task priority
+	 * 
+	 * @return the priority of the task
+	*/
+	public String getPrioirty() {
+		return this.priority;
 	}
 	
 	public boolean isCompleted() {
