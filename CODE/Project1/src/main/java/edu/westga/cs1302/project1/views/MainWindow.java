@@ -114,6 +114,26 @@ public class MainWindow {
         }
     }
 	
+	@FXML
+	private void handleUpdateDescription() {
+	    Task selectedTask = this.taskListView.getSelectionModel().getSelectedItem();
+	    if (selectedTask == null) {
+	        showAlert("No Task Selected", "Please select a task to update.");
+	        return;
+	    }
+
+	    String newDescription = this.selectedTaskDescriptionArea.getText();
+	    try {
+	        selectedTask.updateDescription(newDescription);
+
+	        // Refresh ListView to show changes (if using toString or description in future)
+	        this.taskListView.refresh();
+
+	    } catch (IllegalArgumentException e) {
+	        showAlert("Validation Error", e.getMessage());
+	    }
+	}
+	
 	/**
 	 * Utility method to display error messages in an alert
 	 * 

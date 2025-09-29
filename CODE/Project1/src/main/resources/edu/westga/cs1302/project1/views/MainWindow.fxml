@@ -19,14 +19,15 @@
          <children>
             <TextField id="taskNameField" fx:id="taskNameField" layoutX="68.0" layoutY="119.0" prefHeight="25.0" prefWidth="347.0" promptText="Task Name" />
             <Label layoutX="210.0" layoutY="82.0" text="Task Name:" />
-            <ComboBox fx:id="priorityComboBox" layoutX="177.0" layoutY="345.0" onAction="#handlePriorityChange" prefWidth="150.0" promptText="Priority" />
+            <ComboBox fx:id="priorityComboBox" layoutX="177.0" layoutY="400.0" onAction="#handlePriorityChange" prefWidth="150.0" promptText="Priority" />
             <Label layoutX="205.0" layoutY="170.0" text="Description" />
-            <TextArea fx:id="taskDescriptionArea" layoutX="86.0" layoutY="200.0" prefHeight="91.0" prefWidth="191.0" promptText="Task Description" />
-            <Label layoutX="229.0" layoutY="314.0" text="Priority" />
-            <Button layoutX="220.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleAddTask" text="Add Task" />
-            <Label layoutX="224.0" layoutY="451.0" text="List of Tasks" />
-            <ListView id="taskListView" fx:id="taskListView" layoutX="142.0" layoutY="485.0" prefHeight="200.0" prefWidth="221.0" />
-            <TextArea fx:id="selectedTaskDescriptionArea" editable="false" layoutX="285.0" layoutY="200.0" prefHeight="91.0" prefWidth="185.0" promptText="Read Selected Task Description" />
+            <TextArea fx:id="taskDescriptionArea" layoutX="68.0" layoutY="200.0" prefHeight="91.0" prefWidth="191.0" promptText="Task Description" />
+            <Label layoutX="233.0" layoutY="360.0" text="Priority" />
+            <Button layoutX="220.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleAddTask" text="Add Task" />
+            <Label layoutX="220.0" layoutY="484.0" text="List of Tasks" />
+            <ListView id="taskListView" fx:id="taskListView" layoutX="144.0" layoutY="514.0" prefHeight="200.0" prefWidth="221.0" />
+            <TextArea fx:id="selectedTaskDescriptionArea" editable="false" layoutX="273.0" layoutY="200.0" prefHeight="91.0" prefWidth="185.0" promptText="Read Selected Task Description" />
+            <Button layoutX="227.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleUpdateDescription" text="SaveDescription" />
          </children>
       </AnchorPane>
    </children>
