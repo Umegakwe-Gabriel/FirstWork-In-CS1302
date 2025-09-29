@@ -1,6 +1,7 @@
 package edu.westga.cs1302.project1.views;
 
 import edu.westga.cs1302.project1.model.Task;
+import edu.westga.cs1302.project1.model.TaskManager;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -45,6 +46,8 @@ public class MainWindow {
 	@FXML
 	private TextField selectedTaskPriorityField;
 	
+	private final TaskManager taskManager = new TaskManager();
+	
 	private final ObservableList<Task> tasks = FXCollections.observableArrayList();
 
 	/**
@@ -61,7 +64,7 @@ public class MainWindow {
 		this.priorityComboBox.setItems(priorities);
 		
 		//Ensure the ListView is backed by an observable list
-		taskListView.setItems(tasks);
+		taskListView.setItems(this.taskManager.getTasks());
 		
 		//Listener for task selection
 		this.taskListView.getSelectionModel().selectedItemProperty().addListener(
@@ -100,7 +103,7 @@ public class MainWindow {
 			}
 			
 			Task task = new Task(name, description, priority);
-			tasks.add(task);
+			this.taskManager.addTask(task);
 		}catch (IllegalArgumentException error) {
 			showAlert("Validation Error", error.getMessage());
 		}
