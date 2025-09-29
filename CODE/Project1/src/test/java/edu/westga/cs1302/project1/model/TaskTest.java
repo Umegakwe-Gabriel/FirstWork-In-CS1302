@@ -1,68 +1,70 @@
 package edu.westga.cs1302.project1.model;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
-class TaskTest {
+/**
+ * Test class for Task.
+ * 
+ * @author CS 1302
+ * @version Fall 2025
+ */
+public class TaskTest {
 
-	@Test
-	public void testValidTaskCreation() {
-		Task task = new Task("Homework", "Math exercises", "High");
-		
-		assertEquals("Homework", task.getName());
-		assertEquals("Math exercises", task.getDescription());
-		assertEquals("High", task.getPrioirty());
-	}
-	
-	@Test
-	public void testNullNameThrowsException() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new Task(null, "desc", "Meduim") );
-	}
-	
-	@Test
-	public void testBlankNameThrowsException() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new Task("  ", "description", "Low"));
-	}
-	
-	@Test
-	public void testDescriptionCannotBeNull() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new Task("Homework", null, "Meduim") );
-	}
-	
-	@Test
-    void testSetDescriptionValid() {
-        Task task = new Task("Homework", "Old description", "Low");
-        task.setDescription("New description");
-        assertEquals("New description", task.getDescription());
+    @Test
+    void testValidTaskCreation() {
+        Task task = new Task("Homework", "Finish math problems", 3);
+        assertEquals("Homework", task.getName());
+        assertEquals("Finish math problems", task.getDescription());
+        assertEquals(3, task.getPriority());
     }
-	
-	@Test
-    void testSetDescriptionNull() {
-        Task task = new Task("Homework", "Old description", "Low");
+
+    @Test
+    void testInvalidTaskNameThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Task("", "Some description", 2);
+        });
+    }
+
+    @Test
+    void testInvalidTaskDescriptionThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Task("Chores", null, 2);
+        });
+    }
+
+    @Test
+    void testInvalidPriorityTooLowThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Task("Chores", "Clean the house", 0);
+        });
+    }
+
+    @Test
+    void testInvalidPriorityTooHighThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Task("Chores", "Clean the house", 6);
+        });
+    }
+
+    @Test
+    void testSetDescriptionUpdatesDescription() {
+        Task task = new Task("Study", "Review notes", 2);
+        task.setDescription("Review chapters 1-3");
+        assertEquals("Review chapters 1-3", task.getDescription());
+    }
+
+    @Test
+    void testSetDescriptionWithNullThrowsException() {
+        Task task = new Task("Study", "Review notes", 2);
         assertThrows(IllegalArgumentException.class, () -> {
             task.setDescription(null);
         });
     }
-	
-	@Test
-	public void testPriorityCannotBeNull() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new Task("Task", "description", null));
-	}
-	
-	@Test
-	public void testPriorityCannotBeBlank() {
-		assertThrows(IllegalArgumentException.class, 
-				() -> new Task("Task2", "description1", " "));
-	}
-	
-	@Test 
-	void testToStringReturnsName() {
-		Task task = new Task("Read Book", "Chapter 1", "Low");
-		assertEquals("Read Book", task.toString());
-	}
+
+    @Test
+    void testToStringReturnsCorrectFormat() {
+        Task task = new Task("Laundry", "Wash clothes", 1);
+        assertEquals("Laundry (Priority: 1)", task.toString());
+    }
 }

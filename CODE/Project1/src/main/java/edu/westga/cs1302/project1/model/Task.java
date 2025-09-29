@@ -1,93 +1,71 @@
 package edu.westga.cs1302.project1.model;
 
+/**
+ * Represents a Task with a name, description, and priority.
+ * 
+ * @author CS 1302
+ * @version Fall 2025
+ */
 public class Task {
-	private final String name;
-	private String description;
-	private final String priority; // e.g., 1 = low, 5 = high
-	private boolean  completed;
-	
-	/**
-	 * Constructs a Task with the specified name, description, and priority.
-	 * 
-	 * @param name the name of the task(cannot be null or blank)
-	 * @param description the description of the task
-	 * @param priority the priority of the task ("High", "Medium", "Low")
-	 * 
-	 * @precondition name != null && !name.isBlank()
-	 *                    description != null
-	 *                    priority != null && !priority.isBlank()
-	 *  @postcondition getName() == name &&
-	 *                    getDescription == description
-	 *                    getPriority == priority
-	 * @throws IllegalArgumentException if the name is null/blank or priority is invalid
-	 */
-	public Task(String name, String description, String priority) {
-		if (name == null || name.isBlank()) {
-			throw new IllegalArgumentException("Task name cannot be empty");
-		}
-		if (priority == null || priority.isBlank()) {
-			throw new IllegalArgumentException("Priority cannot be null or blank");
-		}
-		if (description == null) {
-			throw new IllegalArgumentException("Description cannot be null");
-		}
-		this.name = name;
-		this.description = description == null ? "" : description;
-		this.priority = priority;
-	}
-	
-	/**
-	 * @return the name of the task
-	 */
-	public String getName() {
-		return name;
-	}
-	
-	/**
-	 * @return the description of the task
-	 */
-	public String getDescription() {
-		return this.description;
-	}
-	
-	/**
-     * Updates the description of the task.
+
+    private final String name;
+    private String description;
+    private final int priority;
+
+    /**
+     * Creates a new Task.
      *
+     * @precondition name != null && !name.isBlank()
      * @precondition description != null
-     * @postcondition getDescription() == description
+     * @precondition priority >= 1 && priority <= 5
      *
-     * @param description the new description
+     * @param name        the name of the task
+     * @param description the description of the task
+     * @param priority    the priority (1–5)
      */
-	public void setDescription(String description) {
-		if (description == null) {
-			throw new IllegalArgumentException("Descriptio cannot be null");
-		}
-		this.description = description;
-	}
-	
-	/**
-	 * Gets the task priority
-	 * 
-	 * @return the priority of the task
-	*/
-	public String getPrioirty() {
-		return this.priority;
-	}
-	
-	public boolean isCompleted() {
-		return completed;
-	}
-	
-	public void setCompleted(boolean completed) {
-		this.completed = completed;
-	}
-	
-	/**
-	 * @return the task name as the string representation
-	 */
-	@Override
-	public String toString() {
-		//return String.format("%s (priority: %d)", name, priority);
-		return name;
-	}
+    public Task(String name, String description, int priority) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Task name cannot be null or blank");
+        }
+        if (description == null) {
+            throw new IllegalArgumentException("Task description cannot be null");
+        }
+        if (priority < 1 || priority > 5) {
+            throw new IllegalArgumentException("Priority must be between 1 and 5");
+        }
+
+        this.name = name;
+        this.description = description;
+        this.priority = priority;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public int getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Updates the description of this task.
+     *
+     * @precondition newDescription != null
+     * @param newDescription the updated description
+     */
+    public void setDescription(String newDescription) {
+        if (newDescription == null) {
+            throw new IllegalArgumentException("Description cannot be null");
+        }
+        this.description = newDescription;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " (Priority: " + this.priority + ")";
+    }
 }

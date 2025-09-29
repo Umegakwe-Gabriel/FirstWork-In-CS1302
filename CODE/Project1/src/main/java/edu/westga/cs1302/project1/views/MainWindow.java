@@ -32,7 +32,7 @@ public class MainWindow {
 	 * Combo box for selecting task priority. 
 	*/
 	@FXML
-	private ComboBox<String> priorityComboBox;
+	private ComboBox<Integer> priorityComboBox;
 
 	/** 
 	 * List view to display all tasks. 
@@ -60,24 +60,24 @@ public class MainWindow {
 	 */
 	@FXML
 	public void initialize() {
-		ObservableList<String> priorities = FXCollections.observableArrayList("High", "Meduim", "Low");
-		this.priorityComboBox.setItems(priorities);
+		this.priorityComboBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4, 5));
+		this.taskListView.setItems(this.tasks);
 		
-		//Ensure the ListView is backed by an observable list
-		taskListView.setItems(this.taskManager.getTasks());
-		
-		//Listener for task selection
-		this.taskListView.getSelectionModel().selectedItemProperty().addListener(
-			(observable, oldTask, newTask) -> {
-				if (newTask != null) {
-					this.selectedTaskDescriptionArea.setText(newTask.getDescription());
-					this.selectedTaskPriorityField.setText(newTask.getPrioirty());
-				} else {
-					this.selectedTaskDescriptionArea.clear();
-					this.selectedTaskPriorityField.clear();
-				}
-			}
-				);
+//		//Ensure the ListView is backed by an observable list
+//		taskListView.setItems(this.taskManager.getTasks());
+//		
+//		//Listener for task selection
+//		this.taskListView.getSelectionModel().selectedItemProperty().addListener(
+//			(observable, oldTask, newTask) -> {
+//				if (newTask != null) {
+//					this.selectedTaskDescriptionArea.setText(newTask.getDescription());
+//					this.selectedTaskPriorityField.setText(newTask.getPriority());
+//				} else {
+//					this.selectedTaskDescriptionArea.clear();
+//					this.selectedTaskPriorityField.clear();
+//				}
+//			}
+//				);
 	}
 	
 	@FXML
@@ -91,23 +91,28 @@ public class MainWindow {
 	 * Creates a Task from user input and adds it to the ListView.
 	 */
 	@FXML
-	private void handleAddTask() {
-		try {
-			String name = taskNameField.getText();
-			String description = taskDescriptionArea.getText();
-			String priority = priorityComboBox.getValue();
-			
-			if (priority == null) {
-				showAlert("Validation Error", "Please select a priority");
-				return;
-			}
-			
-			Task task = new Task(name, description, priority);
-			this.taskManager.addTask(task);
-		}catch (IllegalArgumentException error) {
-			showAlert("Validation Error", error.getMessage());
-		}
-	}
+    private void handleAddTask() {
+        try {
+            String name = this.taskNameField.getText();
+            String description = this.taskDescriptionArea.getText();
+            Integer priority = this.priorityComboBox.getValue();
+
+            if (priority == null) {
+                this.showAlert("Validation Error", "Please select a priority.");
+                return;
+            }
+
+            Task task = new Task(name, description, priority);
+            this.tasks.add(task);
+
+            this.taskNameField.clear();
+            this.taskDescriptionArea.clear();
+            this.priorityComboBox.getSelectionModel().clearSelection();
+
+        } catch (IllegalArgumentException error) {
+            this.showAlert("Validation Error", error.getMessage());
+        }
+    }
 	
 	/**
 	 * Utility method to display error messages in an alert
