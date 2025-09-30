@@ -1,6 +1,7 @@
 package edu.westga.cs1302.project1.views;
 
 import edu.westga.cs1302.project1.model.Task;
+import edu.westga.cs1302.project1.model.TaskCounter;
 import edu.westga.cs1302.project1.model.TaskManager;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
@@ -75,10 +76,10 @@ public class MainWindow {
 		this.priorityComboBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4, 5));
 		this.taskListView.setItems(this.tasks);
 		
-//		//Ensure the ListView is backed by an observable list
+////		//Ensure the ListView is backed by an observable list
 //		taskListView.setItems(this.taskManager.getTasks());
-//		
-//		//Listener for task selection
+////		
+////		//Listener for task selection
 //		this.taskListView.getSelectionModel().selectedItemProperty().addListener(
 //			(observable, oldTask, newTask) -> {
 //				if (newTask != null) {
@@ -148,18 +149,20 @@ public class MainWindow {
 	
 	@FXML
 	private void handleCountTask() {
-		int high = 0, meduim  = 0, low= 0;
+		int high = TaskCounter.countByPriority(tasks, 1) + TaskCounter.countByPriority(tasks, 2);
+		int medium = TaskCounter.countByPriority(tasks, 3);
+		int low = TaskCounter.countByPriority(tasks, 4) + TaskCounter.countByPriority(tasks, 5);
 		
 		for(Task task: tasks) {
 			switch (task.getPriority()) {
 			case 1, 2 -> high++;
-			case 3 -> meduim++;
+			case 3 -> medium++;
 			case 4, 5 -> low++;
 			}
 		}
 		
 		highPriorityCountLabel.setText("High: " + high);
-		meduimPriorityCountLabel.setText("Meduim" + meduim);
+		meduimPriorityCountLabel.setText("Meduim" + medium);
 		lowPriorityCountLabel.setText("Low: " + low);
 			
 		}
