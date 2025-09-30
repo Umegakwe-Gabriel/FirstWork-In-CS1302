@@ -41,6 +41,18 @@ public class MainWindow {
 	private ListView<Task> taskListView;
 	
 	@FXML
+	private Label highPriorityCountLabel;
+	
+	@FXML
+	private Label meduimPriorityCountLabel;
+	
+	@FXML 
+	private Label lowPriorityCountLabel;
+	
+	@FXML
+	private Button countTasksButton;
+	
+	@FXML
 	private TextArea selectedTaskDescriptionArea;
 	
 	@FXML
@@ -134,6 +146,24 @@ public class MainWindow {
 	    }
 	}
 	
+	@FXML
+	private void handleCountTask() {
+		int high = 0, meduim  = 0, low= 0;
+		
+		for(Task task: tasks) {
+			switch (task.getPriority()) {
+			case 1, 2 -> high++;
+			case 3 -> meduim++;
+			case 4, 5 -> low++;
+			}
+		}
+		
+		highPriorityCountLabel.setText("High: " + high);
+		meduimPriorityCountLabel.setText("Meduim" + meduim);
+		lowPriorityCountLabel.setText("Low: " + low);
+			
+		}
+		
 	/**
 	 * Utility method to display error messages in an alert
 	 * 
