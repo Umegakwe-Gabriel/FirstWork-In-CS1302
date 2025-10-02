@@ -20,12 +20,12 @@ public class Student {
 	 * @throws IllegalArgumentException when precondition is violated
 	 */
 	public Student(String name, int grade) throws IllegalArgumentException {
-		if (name == null) {
-			throw new IllegalArgumentException("Name must be provided.");
-		}
-		if (name.length() < 3) {
-			throw new IllegalArgumentException("Name must have at least 3 characters.");
-		}
+		if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
+        if (grade < 0 || grade > 100) {
+            throw new IllegalArgumentException("Grade must be between 0 and 100.");
+        }
 		this.name = name;
 		this.grade = grade;
 	}
