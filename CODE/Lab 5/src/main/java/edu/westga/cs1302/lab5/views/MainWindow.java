@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import edu.westga.cs1302.lab5.model.GradeCalculator;
 import edu.westga.cs1302.lab5.model.Student;
-import edu.westga.cs1302.lab5.persistence.StudentDataPersistenceManager;
+import edu.westga.cs1302.lab5.persistence.StudentManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -49,7 +49,7 @@ public class MainWindow {
 
 	private void loadStudents() {
 		try {
-			Student[] students = StudentDataPersistenceManager.loadStudentData();
+			Student[] students = StudentManager.loadStudentData();
 			this.students.getItems().clear();
 			this.students.getItems().addAll(students);
 		} catch (IOException error) {
@@ -62,7 +62,7 @@ public class MainWindow {
 	@FXML
 	void saveStudents(ActionEvent event) {
 		try {
-			StudentDataPersistenceManager.saveStudentData(this.students.getItems().toArray(new Student[0]));
+			StudentManager.saveStudentData(this.students.getItems().toArray(new Student[0]));
 		} catch (Exception error) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText(error.getMessage());

@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import edu.westga.cs1302.lab5.persistence.StudentManager;
+
 /**
  * Entry point for the program
  *
@@ -26,6 +28,11 @@ public class Main extends Application {
    *
    * @throws IOException
    */
+  
+  public static void main() {
+	  StudentManager manager = new StudentManager(); 
+  }
+  
   @Override
   public void start(Stage primaryStage) throws IOException {
     Parent parent = FXMLLoader.load(getClass().getResource(Main.GUI_RESOURCE));

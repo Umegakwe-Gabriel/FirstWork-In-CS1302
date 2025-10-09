@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import edu.westga.cs1302.lab5.model.Student;
@@ -14,7 +15,7 @@ import edu.westga.cs1302.lab5.model.Student;
  * @author CS 1302
  * @version Fall 2025
  */
-public class StudentDataPersistenceManager {
+public class StudentManager {
 	
 	public static final String FILE_LOCATION = "data.txt";
 	
@@ -31,7 +32,7 @@ public class StudentDataPersistenceManager {
 		if (students == null) {
 			throw new IllegalArgumentException("must provide an array of students");
 		}
-		try (FileWriter writer = new FileWriter(StudentDataPersistenceManager.FILE_LOCATION)) {
+		try (FileWriter writer = new FileWriter(StudentManager.FILE_LOCATION)) {
 			for (Student currStudent : students) {
 				writer.write(currStudent.getName() + System.lineSeparator());
 				writer.write(currStudent.getGrade() + System.lineSeparator());
@@ -50,7 +51,7 @@ public class StudentDataPersistenceManager {
 	 */
 	public static Student[] loadStudentData() throws FileNotFoundException, IOException {
 		ArrayList<Student> students = new ArrayList<Student>();
-		File inputFile = new File(StudentDataPersistenceManager.FILE_LOCATION);
+		File inputFile = new File(StudentManager.FILE_LOCATION);
 		
 		try (Scanner reader = new Scanner(inputFile)) {
 			while (reader.hasNextLine()) {
@@ -69,5 +70,10 @@ public class StudentDataPersistenceManager {
 		
 		return students.toArray(new Student[0]);
 	}
+
+//	public List<Student> getStudents() {
+//		// TODO Auto-generated method stub
+//		return n;
+//	}
 	
 }

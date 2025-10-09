@@ -48,7 +48,7 @@ public class Student {
 	
 	@Override
 	public String toString() {
-		return this.name +  " - " + this.grade;
+		return this.name +  "," + this.grade;
 	}
 	
 }
