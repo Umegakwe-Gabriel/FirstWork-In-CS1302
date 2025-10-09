@@ -19,7 +19,7 @@ public class Main {
 		contactList.addContact(new PhoneContact("Clara", 4567890123l));
 		contactList.addContact(new PhoneContact("Handles", 5678901234l));
 
-		for(Contact contact : contactList.getContacts()) {
+		for(Contact contact : contactList) {
 			System.out.println(contact.getName());
 		}
 

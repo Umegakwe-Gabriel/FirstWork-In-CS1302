@@ -6,13 +6,14 @@ package edu.westga.cs1302.phonebook.model;
 */
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 /** Manages all contacts stored in a Phonebook
  *
  * @author CS 1302
  * @version Fall 2025
  */
-public class Phonebook{
+public class Phonebook implements Iterable<Contact>{
 	public static final String UNKOWN_CALLER = "UNKOWN CALLER";
 	private ArrayList<Contact> contacts;
 
@@ -104,6 +105,12 @@ public class Phonebook{
 	 */
 	public void sort() {
 		Collections.sort(this.contacts);
+	}
+
+	@Override
+	public Iterator<Contact> iterator() {
+		
+		return this.contacts.iterator();
 	}
 
 }
