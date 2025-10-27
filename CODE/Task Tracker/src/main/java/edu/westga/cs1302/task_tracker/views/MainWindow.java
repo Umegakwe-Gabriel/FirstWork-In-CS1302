@@ -162,6 +162,31 @@ public class MainWindow {
     	
     	this.sortTasks(null);
     }
+    
+    /**
+     *  Displays the details of the currently selected subtask in an information alert.
+     *  
+     *  <p>
+     *  If a subtask is selected in the {@code subTasks} ListView, this method retrieves its name, 
+     *  priority, and description, and shows them to the user in a modal dialog.
+     *  If no subtask is selected, the method does nothing.
+     *  </p>
+     *  @precondition none
+     *  @postcondition If a subtask is selected, an alert is displayed to the user.
+     */
+    @FXML
+    public void showSelectedSubTask() {
+    	Task sel = this.subTasks.getSelectionModel().getSelectedItem();
+    	if (sel == null) {
+    		return;
+    	}
+    	String msg = "Name: " + sel.getName()
+    			+ "\nPriority: " + sel.getPriority()
+    			+ "\nDescription: " + sel.getDescription();
+    	Alert aa = new Alert(AlertType.INFORMATION, msg);
+    	aa.setHeaderText("Subtask Details");
+    	aa.showAndWait();
+    }
 
     /** Perform any needed initialization of UI components and underlying objects.
      * 
