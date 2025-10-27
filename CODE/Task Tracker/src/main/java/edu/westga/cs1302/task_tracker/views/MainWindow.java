@@ -137,6 +137,31 @@ public class MainWindow {
     		FXCollections.sort(this.tasks.getItems(), comp);
     	}
     }
+    
+    /**
+     * Creates a new SubTask and attaches it to the currently selected task.
+     * 
+     * @param event the ActionEvent triggered by clicking the "Add Subtask" button
+     */
+    @FXML 
+    public void addSubTask(ActionEvent event) {
+    	Task selected = this.tasks.getSelectionModel().getSelectedItem();
+    	if (selected == null) {
+    		Alert aa = new Alert(AlertType.WARNING, "Please select a task first.");
+    		aa.showAndWait();
+    		return;
+    	}
+    	
+    	Task newTask = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
+    	Task container = selected.addTask(newTask);
+    	
+    	int idx = this.tasks.getSelectionModel().getSelectedIndex();
+    	this.tasks.getItems().set(idx, container);
+    	
+    	this.subTasks.setItems(FXCollections.observableArrayList(container.getSubTasks()));
+    	
+    	this.sortTasks(null);
+    }
 
     /** Perform any needed initialization of UI components and underlying objects.
      * 
