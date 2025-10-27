@@ -8,6 +8,8 @@ import edu.westga.cs1302.task_tracker.model.Descending;
 import edu.westga.cs1302.task_tracker.model.Task;
 import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
 import edu.westga.cs1302.task_tracker.model.TaskUtility;
+import edu.westga.cs1302.task_tracker.model.NameAscending;
+import edu.westga.cs1302.task_tracker.model.NameDescending;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -147,6 +149,8 @@ public class MainWindow {
     	this.priority.setValue(this.priority.getItems().get(0));
     	this.order.getItems().add(new Ascending());
     	this.order.getItems().add(new Descending());
+    	this.order.getItems().add(new NameAscending());
+    	this.order.getItems().add(new NameDescending());
     	this.priority.setValue(this.priority.getItems().get(0));
     }
 }
