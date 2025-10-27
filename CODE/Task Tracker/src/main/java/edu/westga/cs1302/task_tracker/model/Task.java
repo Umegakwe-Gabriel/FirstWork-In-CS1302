@@ -1,7 +1,5 @@
 package edu.westga.cs1302.task_tracker.model;
 
-import javafx.util.Callback;
-
 /** Stores basic information for a Task
  * 
  * @author CS 1302
@@ -127,9 +125,29 @@ public class Task {
 	public String toString() {
 		return this.name;
 	}
-
-	public Callback getSubTasks() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	/**
+	 * Adds the provided task as a subtask, returning a new ContainerTask that wraps
+	 * this task and contains the argument.
+	 * 
+	 * @param task the subtask to add
+	 * @return a ContainerTask with identical properties to this task and contaning the provided subtask
+	 */
+	public Task addTask(Task task) {
+		if (task == null) {
+			throw new IllegalArgumentException("task must not be null");
+		}
+		ContainerTask container = new ContainerTask(this.getName(), this.getDescription(), this.getPriority());
+		container.addTask(task);
+		return container;
+	}
+	
+	/**
+	 * Returns the List of subtasks for this task. Base Task for none.
+	 * 
+	 * @return list of subtasks
+	 */
+	public java.util.List<Task> getSubTasks() {
+		return java.util.Collections.emptyList();
 	}
 }
