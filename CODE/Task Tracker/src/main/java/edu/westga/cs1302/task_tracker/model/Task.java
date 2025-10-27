@@ -1,5 +1,7 @@
 package edu.westga.cs1302.task_tracker.model;
 
+import javafx.util.Callback;
+
 /** Stores basic information for a Task
  * 
  * @author CS 1302
@@ -124,5 +126,10 @@ public class Task {
 	@Override
 	public String toString() {
 		return this.name;
+	}
+
+	public Callback getSubTasks() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
