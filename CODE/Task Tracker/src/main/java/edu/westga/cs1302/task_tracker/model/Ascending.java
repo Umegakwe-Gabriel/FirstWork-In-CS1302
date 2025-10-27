@@ -2,34 +2,56 @@ package edu.westga.cs1302.task_tracker.model;
 
 import java.util.Comparator;
 
-/**
- * Comparator that sorts tasks by ascending priority.
- * Lower priority values (LOW) comes before higher values (HIGH).
+import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
+
+/** Compare two Tasks to identify the correct Ascending ordering of the tasks.
  * 
- *  @author CS 1302
- *  @version Fall 2025
+ * @author CS 1302
+ * @version Fall 2025
  */
 public class Ascending implements Comparator<Task> {
-	
-	/**
-	 * Compares two tasks based on their priority in ascending order.
+
+	/** Returns a value indicating ordering of the two tasks based 
+	 * on Ascending priority.
 	 * 
-	 * @precondition task1 != null && task2 != null
+	 * @precondition o1 != null && o2 != null
 	 * @postcondition none
 	 * 
-	 * @param task1 the first task to compare
-	 * @param task2 the second task to compare
-	 * @return a negative integer if task1 < task2, 
-	 *         zero if equal, 
-	 *         a positive integer if task1 > task2
+	 * @param o1 the first task to compare
+	 * @param o2 the second task to compare
+	 * 
+	 * @return -1 if o1 goes first
+	 * 			0 if o1 and o2 are same
+	 * 			1 if o1 goes last
 	 */
-	
 	@Override
-	public int compare(Task task1, Task task2) {
-		if (task1 == null || task2 == null) {
-			throw new IllegalArgumentException("Tasks cannot be null");
+	public int compare(Task o1, Task o2) {
+		if (o1 == null) {
+			throw new IllegalArgumentException("o1 must not be null");
 		}
-		return task1.getPriority().compareTo(task2.getPriority());
+		if (o2 == null) {
+			throw new IllegalArgumentException("o2 must not be null");
+		}
+		
+		int result = -1;
+		if (o1.getPriority().equals(o2.getPriority())) {
+			result = 0;
+		} else if (o1.getPriority().equals(TaskPriority.HIGH) || o2.getPriority().equals(TaskPriority.LOW)) {
+			result = 1;
+		} 
+		return result;
 	}
-	
+
+	/** Returns the name of the task to represent the task as a String
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * 
+	 * @return the name of the task
+	 */
+	@Override
+	public String toString() {
+		return "Ascending";
+	}
+
 }

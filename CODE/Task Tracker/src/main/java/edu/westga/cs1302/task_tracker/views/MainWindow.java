@@ -1,15 +1,13 @@
 package edu.westga.cs1302.task_tracker.views;
 
 import java.util.Comparator;
+import javafx.collections.FXCollections;
 
 import edu.westga.cs1302.task_tracker.model.Ascending;
 import edu.westga.cs1302.task_tracker.model.Descending;
 import edu.westga.cs1302.task_tracker.model.Task;
 import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
 import edu.westga.cs1302.task_tracker.model.TaskUtility;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -21,14 +19,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-/**
- * Controller class for MainWindow of the Task Tracker system.
+/** Controller class for MainWindow of the Task Tracker system.
  * 
  * @author CS 1302
  * @version Fall 2025
  */
 public class MainWindow {
-
     @FXML private TextArea description;
     @FXML private Label highCount;
     @FXML private Label lowCount;
@@ -37,119 +33,120 @@ public class MainWindow {
     @FXML private ComboBox<TaskPriority> priority;
     @FXML private TextArea selectedDescription;
     @FXML private TextField selectedPriority;
+    @FXML private ListView<Task> tasks;
     @FXML private ComboBox<Comparator<Task>> order;
-    @FXML private ListView<Task> taskListView;
 
-    // Backing ObservableList for the tasks
-    private final ObservableList<Task> tasks = FXCollections.observableArrayList();
-
-    /**
-     * Adds a new task to the list.
+    /** Add a new task with the provided information to the listview.
      * 
-     * @param event to add a new task to the list.
+     * @precondition none
+     * @postcondition A task will be added to the listview with 
+     * 							  1) a name matching the text of the name textfield, 
+     * 							  2) a description matching the text of the description textarea,
+     * 							  3) a priority matching the selected value of the priority combobox,
+     * 
+     * @param event we will not use this parameter, only here due to JavaFX Library requirement
      */
-    @FXML
+    @FXML 
     void addTask(ActionEvent event) {
-        try {
-            Task newTask = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
-            this.tasks.add(newTask);
-            this.taskListView.refresh();
-        } catch (IllegalArgumentException error) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText(error.getMessage());
-            alert.showAndWait();
-        }
+    	try {
+    		this.tasks.getItems().add(new Task(this.name.getText(), this.description.getText(), this.priority.getValue()));
+    	} catch (IllegalArgumentException error) {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setContentText(error.getMessage());
+    		alert.showAndWait();
+    	}
+    	this.sortTasks(null);
     }
 
-    /**
-     * Displays selected task details.
+    /** Display the priority and description of the task selected in the listview.
      * 
-     * @param event to display the selected task details.
+     * @precondition none
+     * @postcondition the description for the selected task will be displayed in the selectedDescription text area &&
+     * 				  the priority for the selected task will be displayed in the selectedPriority text field
+     * 
+     * @param event we will not use this parameter, only here due to JavaFX Library requirement
      */
     @FXML
     void selectTask(MouseEvent event) {
-        Task selectedTask = this.taskListView.getSelectionModel().getSelectedItem();
-        if (selectedTask != null) {
-            this.selectedPriority.setText(selectedTask.getPriority().toString());
-            this.selectedDescription.setText(selectedTask.getDescription());
-        }
+    	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
+    	if (selectedTask != null) {
+    		this.selectedPriority.setText(selectedTask.getPriority().toString());
+    		this.selectedDescription.setText(selectedTask.getDescription());
+    	}
     }
 
-    /**
-     * Removes the selected task.
+    /** Remove the currently selected task.
      * 
-     * @param event to remove the selected tasks.
+     * @precondition none
+     * @postcondition task selected in the listview will be removed
+     * 
+     * @param event we will not use this parameter, only here due to JavaFX Library requirement
      */
     @FXML
     void removeTask(ActionEvent event) {
-        Task selectedTask = this.taskListView.getSelectionModel().getSelectedItem();
-        if (selectedTask != null) {
-            this.tasks.remove(selectedTask);
-            this.taskListView.refresh();
-        }
+    	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
+    	if (selectedTask != null) {
+    		this.tasks.getItems().remove(selectedTask);
+    	}
     }
 
-    /**
-     * Updates the description of the selected task.
+    /** Update the description of the selected task.
      * 
-     * @param event to update the description of the selected task.
+     * @precondition none
+     * @postcondition description for the task selected in the listview will be updated to match the text in the selectedDescription text area.
+     * 
+     * @param event we will not use this parameter, only here due to JavaFX Library requirement
      */
     @FXML
     void updateDescription(ActionEvent event) {
-        Task selectedTask = this.taskListView.getSelectionModel().getSelectedItem();
-        if (selectedTask != null) {
-            selectedTask.setDescription(this.selectedDescription.getText());
-            this.taskListView.refresh();
-        }
+    	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
+    	if (selectedTask != null) {
+    		selectedTask.setDescription(this.selectedDescription.getText());
+    	}
+    	this.sortTasks(null);
     }
 
-    /**
-     * Counts how many tasks exist per priority level.
+    /** Display the count of tasks for each priority.
      * 
-     * @param event to count the number of priorities assigned to task.
+     * @precondition none
+     * @postcondition count of tasks for each priority are displayed in the appropriate labels.
+     * 
+     * @param event we will not use this parameter, only here due to JavaFX Library requirement
      */
     @FXML
     void countPriorities(ActionEvent event) {
-        this.highCount.setText(Integer.toString(TaskUtility.countOfPriority(TaskPriority.HIGH, this.tasks)));
-        this.mediumCount.setText(Integer.toString(TaskUtility.countOfPriority(TaskPriority.MEDIUM, this.tasks)));
-        this.lowCount.setText(Integer.toString(TaskUtility.countOfPriority(TaskPriority.LOW, this.tasks)));
+    	this.highCount.setText(Integer.toString(TaskUtility.countOfPriority(TaskPriority.HIGH, this.tasks.getItems())));
+    	this.mediumCount.setText(Integer.toString(TaskUtility.countOfPriority(TaskPriority.MEDIUM, this.tasks.getItems())));
+    	this.lowCount.setText(Integer.toString(TaskUtility.countOfPriority(TaskPriority.LOW, this.tasks.getItems())));
     }
-
-    /**
-     * Sorts tasks in ascending or descending order.
+    
+    /** Sort tasks based on the selected ordering.
      * 
-     * @param event to trigger the sorting of tasks.
+     * @precondition none
+     * @postcondition tasks in the list view are sorted based on the provided ordering.
+     * 
+     * @param event we will not use this parameter, only here due to JavaFX Library requirement
      */
     @FXML
     void sortTasks(ActionEvent event) {
-        Comparator<Task> selectedComparator = this.order.getValue();
-        if (selectedComparator != null) {
-            FXCollections.sort(this.tasks, selectedComparator);
-            this.taskListView.refresh();
-        }
+    	Comparator<Task> comp = this.order.getValue();
+    	if (comp != null) {
+    		FXCollections.sort(this.tasks.getItems(), comp);
+    	}
     }
 
-    /**
-     * Refreshes the task list (if needed).
+    /** Perform any needed initialization of UI components and underlying objects.
+     * 
+     * @precondition none
+     * @postcondition none
+     * 
      */
-    private void refreshTaskList() {
-        this.taskListView.setItems(this.tasks);
-        this.taskListView.refresh();
-    }
-
-    /**
-     * Initializes UI components and sets up ComboBoxes.
-     */
+    @FXML
     public void initialize() {
-        // Set up priorities
-        this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
-        this.priority.setValue(TaskPriority.HIGH);
-
-        // Bind list view to observable list
-        this.taskListView.setItems(this.tasks);
-
-        // Add comparators to order ComboBox
-        this.order.getItems().addAll(new Ascending(), new Descending());
-        this.order.setValue(new Ascending());
+    	this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
+    	this.priority.setValue(this.priority.getItems().get(0));
+    	this.order.getItems().add(new Ascending());
+    	this.order.getItems().add(new Descending());
+    	this.priority.setValue(this.priority.getItems().get(0));
     }
 }

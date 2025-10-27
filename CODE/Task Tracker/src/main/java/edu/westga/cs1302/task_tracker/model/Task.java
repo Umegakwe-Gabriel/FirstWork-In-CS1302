@@ -13,9 +13,26 @@ public class Task {
 	 * @version Fall 2025
 	 */
 	public enum TaskPriority {
-		HIGH,
-		MEDIUM,
-		LOW;
+		HIGH(1),
+		MEDIUM(2),
+		LOW(3);
+		
+		private int value;
+		
+		TaskPriority(int value) {
+			this.value = value;
+		}
+		
+		/** Return the value for the priority
+		 * HIGH is 1
+		 * MEDIUM is 2
+		 * LOW is 3
+		 * 
+		 * @return the value
+		 */
+		public int getValue() {
+			return this.value;
+		}
 	}
 	
 	private String description;
