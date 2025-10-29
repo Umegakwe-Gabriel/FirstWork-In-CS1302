@@ -40,8 +40,10 @@ public class NameAscending implements Comparator<Task> {
 		if (cmp != 0) {
 			return cmp;
 		}
-		
-		return Integer.compare(aa.getPriority().getValue(), bb.getPriority().getValue());
+		if (n1.equals(n2)) {
+			return Integer.compare(aa.getPriority().getValue(), bb.getPriority().getValue());
+		}
+		return 0;
 	}
 	
 	@Override

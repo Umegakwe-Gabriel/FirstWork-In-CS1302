@@ -36,12 +36,15 @@ public class NameDescending implements Comparator<Task> {
 			n2 = bb.getName();
 		}
 		
-		int cmp = n2.compareToIgnoreCase(n1);
+		int cmp = n1.compareToIgnoreCase(n1);
 		if (cmp != 0) {
-			return cmp;
+			return -cmp;
 		}
 		
-		return Integer.compare(aa.getPriority().getValue(), bb.getPriority().getValue());
+		if (n1.equals(n2)) {
+			return Integer.compare(aa.getPriority().getValue(), bb.getPriority().getValue());
+		}
+		return 0;
 	}
 	
 	@Override

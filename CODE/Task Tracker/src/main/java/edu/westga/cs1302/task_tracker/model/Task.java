@@ -137,6 +137,10 @@ public class Task {
 		if (task == null) {
 			throw new IllegalArgumentException("task must not be null");
 		}
+		
+		if (this instanceof ContainerTask) {
+	        return ((ContainerTask) this).addTask(task);
+	    }
 		ContainerTask container = new ContainerTask(this.getName(), this.getDescription(), this.getPriority());
 		container.addTask(task);
 		return container;
