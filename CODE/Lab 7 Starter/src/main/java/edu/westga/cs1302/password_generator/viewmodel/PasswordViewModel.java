@@ -149,13 +149,13 @@ public class PasswordViewModel {
 		if (this.useUpper.get()) {
 			pools.add(UPPER);
 		}
-		if (this.useUpper.get()) {
+		if (this.useLower.get()) {
 			pools.add(LOWER);
 		}
-		if (this.useUpper.get()) {
+		if (this.useDigits.get()) {
 			pools.add(DIGITS);
 		}
-		if (this.useUpper.get()) {
+		if (this.useSymbols.get()) {
 			pools.add(SYMBOLS);
 		}
 
