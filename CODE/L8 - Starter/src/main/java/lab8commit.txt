@@ -1,0 +1,551 @@
+commit dbeb3cd3e82ff71d487f224895a3858bc3613b50
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Nov 10 13:02:44 2025 -0500
+
+    Lab8 Step 4 - Tests for ViewModel validation and history
+    
+    Add tests fpr regex/range validation and for appending newest-first inmto password history on successful generation.
+
+commit 0f30d6dc00d5059bbc1dfaa50d1fd344821546d1
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Nov 10 12:23:44 2025 -0500
+
+    Lab8 Step 3 - Controller: bind validation and history
+    
+    Bind Generate button disabled-state to lengthValid. Bind ListView to ViewModel passwordHistory. Keep existing input bindings and error label.
+
+commit 9b762df40ac56a4241d5cf3ce3ae4df6cd2cf72c
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Nov 10 12:06:49 2025 -0500
+
+    Lab8 Step 2 - ViewModel: add regex validation and password history.
+    
+    Add lengthValid flag with regex listener on minimumLength. Maintain an ObservableList of generated passwords (newest first). Update generatePassword to push to history.
+
+commit 6f45f629477b781a1eb26546aa1e0e2cb5d787ae
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Nov 10 11:15:56 2025 -0500
+
+    Lab8 Step 1 -  Replace TextArea with ListView for password history
+    
+    Update MainWIndow.fxml to show a running list of generated passwords instead of only the most recent output.
+
+commit 82bc98075ae76a53510e2067f3a49a90d2c8bfc0
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Nov 6 08:22:55 2025 -0500
+
+    LAB7 STEP 1- Add PasswordViewModel (MVM)
+    
+    Expose properties: length, useUpper/useLower/useDigits/useSymbols, password, strength, score. Implement generte() with category guarantees and strength scoring. Include PasswordStrength enum.
+
+commit b2149749b752c9c7e00ae989b262f73b3d5aad41
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Wed Oct 29 14:38:32 2025 -0400
+
+    Made all the following changes to the code to ensure that there are no failures and errors and all those.
+
+commit 9e10bfad3f550a7045528e8a9ed961f3cdd64f27
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Oct 27 12:32:05 2025 -0400
+
+    3C- Wire subtask creation into the UI
+    
+    Implement addSubTask() to wrap the selected task into a ContainerTask,
+    refresh the subtasks list, and keep the main list sorted.
+
+commit 72a64cca5e6198f94e5bf400245ff3a471e42ac4
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Oct 27 11:37:40 2025 -0400
+
+    3C - Wire subtask creation into UI
+    
+    Implement addSubTask() to wrap the selcted task into a ContianerTask,
+    refresh the subtasks list, and keep the main list sorted.
+
+commit 851bd82b3d6bfd624cab7d56bdbde52b51b921af
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Oct 27 11:20:23 2025 -0400
+
+    3B- Implement business logic for subtasks
+    
+    1. Add ContainerTask to hold child tasks.
+    2. Extend Task with addTask() and getSubTasks() defaults so plain tasks wrap into containers when the first subtask is added.
+
+commit 90947e80fac469afcb4893fef93aa04dac0b0f4d
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Oct 26 23:43:40 2025 -0400
+
+    3A - Add UI for subtasks
+    
+    1. Introduce 'Add Subtask' button and Subtasks ListView in MainWindow.
+    2. Bind main-task selection to refresh the subtasks pane automatically.
+
+commit 3757af742bf80217aa216c032932a62d61355e1c
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Oct 26 23:12:34 2025 -0400
+
+    2B- Wire name-based comparators imnto the UI
+    
+    Add Name (A->Z) and Name (Z->A) options to the sort selector so the user can toggle between priority- and name-based ordering.
+
+commit b522f113edb0f036f63d226a4e9a567dda1deb7c
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Oct 26 23:05:49 2025 -0400
+
+    2A- Add name-based comparators and clarify prioirty labels
+    
+    Introduce NameAscending and NameDescending comparators for alphabetical sorting.
+    Update Ascending/Descending toString() to clearly indicate the priority order presented in the UI.
+
+commit a20fdf946d2bbe34226c8941521c5b2477696f07
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Oct 26 22:15:07 2025 -0400
+
+    1A - Enable automic re-sorting on task add/update
+    
+    1. Hook sortTasks() into addTassk and updateDescription so the task list always relfects the selcted comparator.
+    2. Improves UX and keeps the UI state consistent after mutations.
+
+commit 934b2cc1690cbc7993bcccc179aa42e47543b5bd
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Oct 14 13:40:23 2025 -0400
+
+    fix MainWindow imports, sorting logic, and task binding:
+    
+    Corrected ObservableList import to javafx.collections
+    Bound ListView to ObservableList<Task> tasks.
+    Implemented ComboBox-based sorting with Ascending and Descending comparators.
+    Fixed refreshTaskList() and simplified count and update methods.
+
+commit 2814ddd0720dca75360e322c01c0b93ebae14325
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Oct 14 12:26:55 2025 -0400
+
+    Implemented Descedning comparator for task prioirity sorting
+    
+    Added Descending.java comparator to sort tasks from HIGH -> LOW.
+    Implemented null-safety checks for invalid Task arguments.
+    Added DescendingTest.java with complete unit tests for comparator behaviour.
+    Ensured consistent styl;e and documentation per CHeckstyle requirements.
+
+commit 6b3f0ff45a988358c9d379ff8af318ddced9f49f
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Oct 13 15:00:13 2025 -0400
+
+    Implement Ascending Comparator for Task Priority Sorting
+    
+    Added Ascending.java class that implements Comparator<Task>
+    Compares Task objects by ascending= by ascending priority (LOW to HIGH)
+    Added corresponding AscendingTest.java for unit testing
+    Ensured exception thrown for nul task comparisons
+    Verified sorting order correctness using JUnit tests.
+
+commit fc6d55197543586fa1b99c8970c66416e6600329
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Oct 9 12:03:26 2025 -0400
+
+    Starting Lab 5
+    
+    Preparing files and setting everything up for the LAB 6 Project.
+
+commit 3de69c071de8b41976839fc9eb1368e8e46759b5
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Oct 9 10:10:37 2025 -0400
+
+    Starting working on Phone Book:
+    
+    Preparing my files and setting everything up.
+
+commit dc81d266a9d7af22bdad608fc588391c84a80461
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Oct 2 07:44:39 2025 -0400
+
+    Made the following changes in the Student.java file.
+    
+    1. Add Student model with validation for name and grade.
+
+commit 794a8144632cb75a9cf95a7f059e8f00a6c37e79
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 30 11:59:46 2025 -0400
+
+    Add TaskCounterTest and Integrate TaskCounter into MainWIndow:
+    
+    1. Added unit test for TaskCounter to validate correct counting behaviour.
+    2. Test cover normal cases, empty list, no matches, null input, and invalid prioirty.
+    3. Updated handleCountTasks in MainWindow to delegate counting logic to TaskCounter.
+    4. UI labels now correctly reflects counts using centralized business logic.
+
+commit bf78427e9e19743fb87a91f6a6b70e30ea411d18
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 30 10:23:59 2025 -0400
+
+    5A- Add UI elements for counting tasks by priority:
+    
+    1. Added labels for High, Meduim, and Low priorities and a button to trigger task priorities.
+    2. Updates will display the number of tasks for each priority in the MainWindow UI.
+
+commit 34e092b63f2afa05a1d139dba47c54be2e42ebb4
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 29 11:32:37 2025 -0400
+
+    Adding Task Manager:
+    
+    1. Added TaskManager.java in model pacakge to manage a collection of Task Objects
+    Provides methods to add, remove, and get tasks, ensuring validation against null objects.
+    Added JUnit tests fro TaskManager to verify correct behaviour of add, remove, and ensuring null validation
+    Ensures that the task list updates properly and exceptions are thrown.
+
+commit 734f4e644046fc1ad1f0d27ac6cefcec409f412a
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 29 08:59:26 2025 -0400
+
+    4A- Made the following chnages:
+    
+    Added setPriority method in Task and unit test for updating priority
+
+commit 4c5ea0f936bc019a6091ef359cbdcd3d746d5315
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 29 08:52:53 2025 -0400
+
+    Connect Buisness Logic and UI Description Updates
+    
+    1. ADDED SAVE decription button in MAINWINDOW.FXML
+    IMplemented handle Update description method inn MainWindow.java
+    Enabled editing and saving task descriptions directly from UI.
+
+commit 39394a518f55d1bc724a5f69e51679d97bddea0f
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 29 08:47:30 2025 -0400
+
+    3B- Update Task Description:
+    
+    Added updateDescription in Task Class
+    Allowed only description to be mutable (name and prioority remains final).
+    Added unit test to validate updating and rejecting nulll descriptions.
+
+commit 26e3771785e4c32f7110fdf994298ce595340650
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 29 08:39:01 2025 -0400
+
+    3A- Add Ability to update Task Description:
+    
+    Added Update Descrition(String) method to Task Class
+    IMplemeted validation to prevent null ormeplty descriptions
+    Updated Task TEST WITH new test cases for updating descriptions
+    Esnired existing functionality still works.
+
+commit 8e5908fd9ee5e0554ba2c1060ec6cf09874a0c3a
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 29 08:09:05 2025 -0400
+
+    3A- Connect Task Manager to controller:
+    
+    1. Refactor MainWindow controller to use Task Manager for managing tasks storage.
+
+commit d6de3224da23871375446c6a62447bb03e660b87
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 29 08:00:00 2025 -0400
+
+    2B- Task Manager Class
+    
+    Create Task Manager class to store tasks in the observable lists and provided add/get methods.
+    Worked on many erorrs during this process.
+
+commit 19c807199eca6020bb68c8bd03077477e7521295
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 29 07:35:23 2025 -0400
+
+    2B- feat (controller): implement task selesction display logic
+    
+    1. Added @FXML fileds for description area and priority field.
+    Updated initialize() to attach a listener to taskListView.
+    Display selected task's description and priority in UI.
+
+commit aabb371977b96a06155feec5813a06f199f4702f
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Sep 28 16:51:19 2025 -0400
+
+    2A- UI for Displaying Selected Task:
+    
+    1. add read-only UI components for displaying selected task details
+    2. Made chanhes the Screen Builder.
+
+commit d259cab81d6977cf8963b3c57aabaaac28a0f883
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Sep 28 15:49:34 2025 -0400
+
+    1C - Connect UI to Business Logic for Adding Task:
+    
+    1. Updated MainWindow to handle Add Task button.
+    2. Implemented handleAddTask() to create Task object and add it to the ListView.
+    3. Added validation for missing priority and invalid input (error alerts).
+    4. Cleared input fields after successful task creation.
+
+commit 3f24df7306bb2241e90dbc30bb9df5f1233ea78d
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Sep 28 11:25:54 2025 -0400
+
+    Business Logic for Storing A Task
+    
+    Added a Task class with immutable name and priority and mutable description
+    IMplemented constructor validation (non-empty name, priority between 1-5).
+    Added getters and toString() returning task name.
+    Created TaskTest with unit test ofr valid/invalid tassk creation and toString.
+    Also changes the priority back to Integernot String.
+
+commit 58da6257877b2192d8573ca24064cf69fd3cd515
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Sep 28 10:47:28 2025 -0400
+
+    Made a chnage:
+    
+    Changed the ComboBox from being initialized and set it to priorites in String.
+
+commit cb5f74eb792a10b92181e72f2ef1d490f41ca85d
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Sun Sep 28 10:39:56 2025 -0400
+
+    UI for Adding Tasks:
+    
+    1. Created main.fxml with fields for task name, description, priority, and add button
+    2. Added MainWindow.java controller with @FXML fields mapped to UI elements.
+    3. Initialized ComboBox with priorities 1-5.
+    4. Added placeholder handleAddTask method and handlePriorityChange to be implemented later.
+
+commit 234894e3cc350f95f8ac1d6ecd63cac22aefa652
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 25 10:12:37 2025 -0400
+
+    Started Lab 4:
+    
+    1. Imported the files into eclipse.
+    2. Started working on the student data persistence manager.
+
+commit 369481ba85e7c2632537d78d1a481b6374fac11a
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 23 12:37:25 2025 -0400
+
+    Made the followign chnages in the MainWindow.java file
+    
+    1. Added an addTitle mehtod to add the title of the list upon clicking to the movie list on the ListView UI
+    2. Added the popUpFavorite method to display the favorite movies on a different screen sort of.
+    3. Added a select Movie method to the file, to select a movie upon clicking.
+
+commit a3f69c128863e58989791de8cafb5a23dc569ed4
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 23 11:29:09 2025 -0400
+
+    Made the following chnages to the methods:
+    
+    1. creted a method thast saves the data of the students
+    2. Created a methods that loads the studnrt data and returns an array of students
+    3. Added a NumberFormatException, NoSuchElementException to handle the excpetion/errors while loading the student data.
+
+commit e83c653d0e7d9d715eba2d95e49a798e31168ef9
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 23 09:59:22 2025 -0400
+
+    Starting the work on course management system:
+    
+    1. Imported the folder and files to eclipse to start working on it.
+
+commit 46ea55a770dbe413b4dcdaf48893e5002ea3e456
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 15 09:10:26 2025 -0400
+
+    Made the following changes:
+    
+    1. Corrected all the checkstyle warning by adding the right javadoc comment before each method
+
+commit 682e0e14fd1b3fdfbf36642d165d0f71582420aa
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 15 08:57:40 2025 -0400
+
+    Added the following:
+    
+    1. The static method that calculates the total of bill items from the array of bill items
+
+commit 7b29a7f7d36f0b630e85c2127e267b7cfae40a3e
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 15 08:39:37 2025 -0400
+
+    Made the following changes
+    
+    1. Worked on the checkstyle warnings
+    2. created a static method that calculated the tax amount from the array of bill items objects
+
+commit 54a34960f4a47c91000e2df2b6bf47a432f0c60d
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Mon Sep 15 08:29:49 2025 -0400
+
+    Made the following additions
+
+commit 4b2fad545a26b7a03edeae42a2e33d82f505bc24
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 11 12:37:50 2025 -0400
+
+    Making the fields finals to make them immutable
+
+commit c2ff4a55f57e60f0eb8a09176c9bd4e8a887d4f8
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 11 12:07:29 2025 -0400
+
+    added a new Lab 4 folder
+
+commit 96474e097e8697c054ec8df3e1ea6c2057a95145
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 11 07:02:16 2025 -0400
+
+    commit after realization and correction of the Lab3 bill code
+
+commit edda52b89bcd7bffc9f91f1644af8741024eedb7
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 10:46:13 2025 -0400
+
+    setting up Javafv sample Lab 3
+    Adding Bill model class to java sample Fx project
+    Renamed project and base package
+
+commit 295669ffa25b0866abf3c26554d9cf240a6b3801
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 07:23:49 2025 -0400
+
+    added test for adding null item
+
+commit c1fbbd3baedba1fca0749efcecf352e166496715
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 07:19:36 2025 -0400
+
+    test bill with multiple items
+
+commit bfd8dc464be352bf3f7d06ff25d5a70afd02a904
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 07:03:32 2025 -0400
+
+    added a test for empty bill
+
+commit 95d9204a5d375771abeeec4318efb6696c08859a
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 06:56:53 2025 -0400
+
+    added test for null bill to the for the test get Text class
+
+commit 4f1150f2fcea27d34e3a76574129b1ea93a56f23
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Sep 4 06:45:14 2025 -0400
+
+    Started testing for the get text and the view item package
+
+commit 6056276f358fb757d6270468433afc49f889eb3d
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 12:19:12 2025 -0400
+
+    Made some checkstyle corrections on the Bill.java and BillItem.java
+    2) Commented the code for test for adding null item because I did not know why it was not running
+
+commit a84a20f61b4dd02ec126a71842f79b48f0c92843
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 12:06:54 2025 -0400
+
+    Adding test for adding a valid item
+
+commit 7c7b39a053a1aef9aadb4d4516212303ae38bf59
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:53:39 2025 -0400
+
+    Adding test for Zero Amount
+
+commit 612421ec9e764c4f348d38f77b5ee777370c0680
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:47:47 2025 -0400
+
+    adding the test for negative amount
+
+commit 34dcf750321cbd01c385088c9342073fb87027b5
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:35:33 2025 -0400
+
+    Added the test for when name is null and throw exception
+
+commit 4eb6370b1b9212a35586a707f7bc3fca9e07d6b9
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:31:25 2025 -0400
+
+    added test for valid BillItem
+
+commit 11cc5b2bcdeb3bca8db9e10b71e2595654f55836
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:23:30 2025 -0400
+
+    Added test constants
+
+commit ced6270899970706589a3103aea58b6872ce4412
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:19:08 2025 -0400
+
+    test add null item throws exception
+
+commit c177a77e938d1275e46cd8b29d4169846077c475
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 11:08:25 2025 -0400
+
+    test for when the new bill is Empty
+
+commit dc02967076ceb782022c61ccb1d1b24561e2c487
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Sep 2 09:33:55 2025 -0400
+
+    Adding test files
+
+commit 58b7dc8a4ff6e7fba75b2f628044ec1081577281
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 28 12:13:52 2025 -0400
+
+    Making changes from the zip file to the unzipped Lab 2
+
+commit 7970257c3982761688f276c6ddd2de798990a0b1
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 28 12:10:19 2025 -0400
+
+    Adding my Lab 2 to work on it
+
+commit 5dc2e02cdace0d918928e472a2be7d6788902505
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Aug 26 11:34:15 2025 -0400
+
+    Issue 1- Poor Separation of Concerns
+    1) I made it possible to view the list of items in a Bill
+    2) I add a view Package
+    3) I added a new class that implements the functionality correctly
+
+commit 15d9f29c4c5161f19f29c1b9a56a30518184a431
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 21 12:23:23 2025 -0400
+
+    Adding Base Project
+    
+    1) Adding Lab 1 to /code/
+
+commit 2770356222dfcd41f6373554a41482e616a13836
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Aug 21 11:21:39 2025 -0400
+
+    Adding Base Project
+    
+    1) Adding Eclipse project to /code/
+
+commit 02dc1b133a5a959c7d790896c1f003267d36ee51
+Author: Gabriel Toochukwu <gabrieltoochukwu@E-TLCNCHESNUT-L.uwg.westga.edu>
+Date:   Thu Aug 21 10:00:35 2025 -0400
+
+    Adding Base Project Structure
+    
+    1) Creating the README for the project (README.md)
+    2) Create the code directory for the project (/code/)
+    3) Create new repository
+
+commit daa7d1d8fc8a093b893db319046acfb6afcc1147
+Author: Umegakwe Toochukwu <131870372+Umegakwe-Gabriel@users.noreply.github.com>
+Date:   Tue Aug 19 10:04:37 2025 -0400
+
+    Initial commit
