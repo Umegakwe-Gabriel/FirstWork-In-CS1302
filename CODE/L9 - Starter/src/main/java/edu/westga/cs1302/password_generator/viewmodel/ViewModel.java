@@ -1,14 +1,11 @@
 package edu.westga.cs1302.password_generator.viewmodel;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Pattern;
 
 import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -22,6 +19,10 @@ import javafx.collections.ObservableList;
  * @version Fall 2025
  */
 public class ViewModel {
+	
+	/** Accepts positive integers (no zero or negative).*/
+	private static final Pattern LENGTH_PATTERN = Pattern.compile("^[1-9][0-9]*$");
+	
 	private StringProperty minimumLength;
 	private BooleanProperty requireDigits;
 	private BooleanProperty requireLowercase;
@@ -36,11 +37,6 @@ public class ViewModel {
 
 	private PasswordGenerator generator;
 
-	/*
-	 * Accepts positive integers (no zero or negative).
-	 */
-	private static final Pattern LENGTH_PATTERN = Pattern.compile("^[1-9][0-9]*$");
-
 	/**
 	 * Initialize the properties for the viewmodel
 	 */
@@ -49,7 +45,7 @@ public class ViewModel {
 		this.requireDigits = new SimpleBooleanProperty(false);
 		this.requireLowercase = new SimpleBooleanProperty(false);
 		this.requireUppercase = new SimpleBooleanProperty(false);
-		
+
 		this.password = new SimpleStringProperty("");
 		this.errorText = new SimpleStringProperty("");
 
@@ -70,14 +66,14 @@ public class ViewModel {
 				this.errorText.set("");
 			}
 		});
-		
+
 		this.requireDigits.addListener((obs, ov, nv) -> this.updateSelectionValid());
 		this.requireLowercase.addListener((obs, ov, nv) -> this.updateSelectionValid());
 		this.requireUppercase.addListener((obs, ov, nv) -> this.updateSelectionValid());
-		
+
 		this.updateSelectionValid();
 	}
-	
+
 	private void updateSelectionValid() {
 		boolean anySelected = this.requireDigits.get() || this.requireLowercase.get() || this.requireUppercase.get();
 		this.selectionValid.set(anySelected);
@@ -132,7 +128,7 @@ public class ViewModel {
 	public ObservableList<String> getPasswordHistory() {
 		return this.passwordHistory;
 	}
-	
+
 	/**
 	 * Return the password property
 	 * 
@@ -150,7 +146,7 @@ public class ViewModel {
 	public StringProperty getErrorText() {
 		return this.errorText;
 	}
-	
+
 	/**
 	 * Return the error text property
 	 * 
@@ -159,7 +155,7 @@ public class ViewModel {
 	public BooleanProperty getLengthValid() {
 		return this.lengthValid;
 	}
-	
+
 	/**
 	 * Return the error text property
 	 * 
@@ -190,17 +186,17 @@ public class ViewModel {
 			this.errorText.set("Cannot generate: no character type selected.");
 			return;
 		}
-		
+
 		int minimumLengthValue;
 		try {
 			minimumLengthValue = Integer.parseInt(this.minimumLength.get().trim());
 		} catch (NumberFormatException numberError) {
 			this.password.set("");
-			this.errorText.set("Invalid Minimum Length: must be a positive integer but was "
-					+ this.minimumLength.get());
+			this.errorText
+					.set("Invalid Minimum Length: must be a positive integer but was " + this.minimumLength.get());
 			return;
 		}
-		
+
 		try {
 			this.generator.setMinimumLength(minimumLengthValue);
 		} catch (IllegalArgumentException invalidLengthError) {
@@ -208,16 +204,16 @@ public class ViewModel {
 			this.errorText.set("Invalid Minimum Length " + invalidLengthError.getMessage());
 			return;
 		}
-		
+
 		this.generator.setMustHaveAtLeastOneDigit(this.requireDigits.get());
 		this.generator.setMustHaveAtLeastOneLowerCaseLetter(this.requireLowercase.get());
 		this.generator.setMustHaveAtLeastOneUpperCaseLetter(this.requireUppercase.get());
-		
+
 		String newPassword = this.generator.generatePassword();
-		
+
 		this.errorText.set("");
 		this.password.set(newPassword);
 		this.passwordHistory.add(0, newPassword);
-		
+
 	}
 }
