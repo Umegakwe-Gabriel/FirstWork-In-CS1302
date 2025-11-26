@@ -79,7 +79,7 @@ public class MainWindow {
             ((Node) event.getSource()).getScene().getWindow());
 
         if (file == null) {
-            return; // user cancelled
+            return;
         }
 
         try (PrintWriter writer = new PrintWriter(file, "UTF-8")) {
