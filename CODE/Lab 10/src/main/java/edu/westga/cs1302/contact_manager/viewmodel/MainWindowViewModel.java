@@ -6,9 +6,7 @@ import java.util.Map;
 
 import edu.westga.cs1302.contact_manager.model.Contact;
 import javafx.beans.property.ListProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -26,7 +24,7 @@ public class MainWindowViewModel {
 	private ListProperty<Contact> contacts;
 
 	private Map<String, Contact> contactsByName;
-	private Map<String, Contact> contactByPhone;
+	private Map<String, Contact> contactsByPhone;
 
 	/**
 	 * Initialize the MainWindowViewModel
@@ -41,7 +39,7 @@ public class MainWindowViewModel {
 		this.searchCriteria = new SimpleStringProperty("");
 		this.contacts = new SimpleListProperty<Contact>(FXCollections.observableList(new ArrayList<Contact>()));
 		this.contactsByName = new HashMap<String, Contact>();
-		this.contactByPhone = new HashMap<String, Contact>();
+		this.contactsByPhone = new HashMap<String, Contact>();
 	}
 
 	/**
@@ -118,7 +116,7 @@ public class MainWindowViewModel {
 			throw new IllegalArgumentException("A contact with this name already exists: " + nameValue);
 		}
 
-		if (this.contactByPhone.containsKey(phoneValue)) {
+		if (this.contactsByPhone.containsKey(phoneValue)) {
 			throw new IllegalArgumentException("A contact with this phone number already exists: " + phoneValue);
 		}
 		
@@ -126,27 +124,41 @@ public class MainWindowViewModel {
 		
 		this.contacts.add(newContact);
 		this.contactsByName.put(nameValue, newContact);
-		this.contactByPhone.put(phoneValue, newContact);
+		this.contactsByPhone.put(phoneValue, newContact);
 	}
 
 	/**
 	 * Finds a contact with name or phone number matches provide search criteria
 	 * 
 	 * @precondition none
-	 * @postcondition getResultContact().get() is set to the appropriate contact (if
-	 *                contact found) OR null (if no contact found)
+	 * @postcondition none
 	 * 
-	 * @return A string representation of the contact found.
+	 * @return A string representation of the contact found,
+	 * 			or, "No contact found." if none exists.
+	 * 
+	 * @throws IllegalArgumentException if the search criteria is not a valid name 
+	 * 									or phone number.
 	 */
 	public String findContact() {
-		if (!Contact.checkName(this.searchCriteria.get()) && !Contact.checkPhoneNumber(this.searchCriteria.get())) {
-			throw new IllegalArgumentException("Search criteria is not a valid name or phone number");
+		String criteria = this.searchCriteria.get();
+		
+		boolean validName = Contact.checkName(criteria);
+		boolean validPhone = Contact.checkPhoneNumber(criteria);
+		
+		if (!validName && !validPhone) {
+			throw new IllegalArgumentException("Search criteria is not a valid name or phone number.");
 		}
-		for (Contact currContact : this.contacts.get()) {
-			if (currContact.getName().equals(this.searchCriteria.get())
-					|| currContact.getPhoneNumber().equals(this.searchCriteria.get())) {
-				return currContact.toString();
-			}
+		
+		Contact found = null;
+		
+		if (validName) {
+			found = this.contactsByName.get(criteria);
+		} else if (validPhone) {
+			found = this.contactsByPhone.get(criteria);
+		}
+		
+		if (found != null) {
+			return found.toString();
 		}
 		return "No contact found.";
 	}
