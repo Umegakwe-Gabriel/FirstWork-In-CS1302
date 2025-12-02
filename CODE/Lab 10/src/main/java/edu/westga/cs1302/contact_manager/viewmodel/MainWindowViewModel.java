@@ -108,16 +108,16 @@ public class MainWindowViewModel {
 		if (!Contact.checkName(nameValue)) {
 			throw new IllegalArgumentException("name is not valid");
 		}
-		if (Contact.checkPhoneNumber(phoneValue)) {
-			throw new IllegalArgumentException("phone number isnot valid");
+		if (!Contact.checkPhoneNumber(phoneValue)) {
+			throw new IllegalArgumentException("phone number is not valid");
 		}
 
 		if (this.contactsByName.containsKey(nameValue)) {
-			throw new IllegalArgumentException("A contact with this name already exists: " + nameValue);
+			throw new IllegalArgumentException("name already exists");
 		}
 
 		if (this.contactsByPhone.containsKey(phoneValue)) {
-			throw new IllegalArgumentException("A contact with this phone number already exists: " + phoneValue);
+			throw new IllegalArgumentException("phone number already exists");
 		}
 		
 		Contact newContact = new Contact(nameValue, phoneValue);
@@ -146,7 +146,7 @@ public class MainWindowViewModel {
 		boolean validPhone = Contact.checkPhoneNumber(criteria);
 		
 		if (!validName && !validPhone) {
-			throw new IllegalArgumentException("Search criteria is not a valid name or phone number.");
+			throw new IllegalArgumentException("Search criteria is not a valid name or phone number");
 		}
 		
 		Contact found = null;
