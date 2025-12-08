@@ -1,4 +1,4 @@
-package edu.westga.cs1302.password_generator;
+package edu.westga.cs1302.contact_manager;
 
 import java.io.IOException;
 
@@ -14,8 +14,8 @@ import javafx.stage.Stage;
  * @version Fall 2025
  */
 public class Main extends Application {
-	private static final String WINDOW_TITLE = "Password Generator";
-	private static final String GUI_RESOURCE = "view/MainWindow.fxml";
+	private static final String WINDOW_TITLE = "Contact Manager";
+	private static final String GUI_RESOURCE = "view/MainWindow_new.fxml";
 
 	/**
 	 * JavaFX entry point.

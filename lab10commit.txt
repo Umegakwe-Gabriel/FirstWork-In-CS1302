@@ -1,3 +1,72 @@
+commit 8ca267b2323bbc5a942b395999b108c9ec16ec5e
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Tue Dec 2 05:21:30 2025 -0500
+
+    Made the following changes in the MainWindowViewModel to prevent the test from failings and correct the errors.
+    
+    Making the sure the statements in the string were matching.
+    Adding the ! sign where it was missed in the pre-conditions.
+
+commit 40bc7bfb48aff250c79e728efa67c39a592382ca
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Wed Nov 26 18:49:45 2025 -0500
+
+    Lab10 Step 3- Use maps ofr content lookup by name or phone.
+    
+    Modify findContact to validate the search criteria and use name/phone
+    maps for 0(1) lookup instead of scanning the list.
+
+commit e33c51a00d61e5a56e3df19a09d88fa302a7fbd8
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Wed Nov 26 18:23:59 2025 -0500
+
+    Lab10 Step 2 - Prevent duplicate contacts by name or phone
+    
+    Update addContact to validate input and reject contacts with existing names or phone numbers using the internal maps.
+
+commit 59749f22e95a78f3e5421c020a4f7c4963567beb
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Wed Nov 26 17:53:38 2025 -0500
+
+    Lab10 Step 1 - Add name/phone maps to MainWindowViewModel.
+    
+    Introduce maps keyed by contact, name, and phone number to support fast
+    lookup and uniqueness enforcement.
+
+commit 137e10eb15f3a817a36e14149c0b841223b03bf3
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Nov 20 08:29:38 2025 -0500
+
+    Lab9 Step 5 - Add ViewMOdel tests for selectionValid and guarded generation.
+    
+    Verify that no-selection is treated as invalid input and that valid inputs result in a new passowrd stored in the history.
+
+commit c2fef414a3fec5d2da60709c8caed57abdc19852
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Thu Nov 20 08:22:28 2025 -0500
+
+    Lab9 Step 4 - Implement File menu actions (Save, About, Close)
+    
+    save writes password history to the text file.
+    About shows project info and author name, and
+    Close terminates the main window.
+
+commit 4adfbab11501023580adc187f2cfc6ea80ecbb12
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Fri Nov 14 19:28:05 2025 -0500
+
+    Lab9 Step 2 - Disable Generate button when any input is invalid.
+    
+    Bind Generate button disabled state to lengthValid and selectionValid flags from the ViewModel.
+
+commit d92e1ecafdf98c702ceb8e25c9e3988849c01a1f
+Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
+Date:   Fri Nov 14 18:18:32 2025 -0500
+
+    Lab9 Step 1 - Extend ViewModel with selectionValid and improved validation.
+    
+    Track whether any character type is selected and combine with regex-based minimum length validation for enabling generation.
+
 commit dbeb3cd3e82ff71d487f224895a3858bc3613b50
 Author: Toochukwu Gabriel Umegakwe <tumegak1@my.westga.edu>
 Date:   Mon Nov 10 13:02:44 2025 -0500
