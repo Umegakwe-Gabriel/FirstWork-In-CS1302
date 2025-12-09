@@ -1,14 +1,13 @@
 package edu.westga.cs1302.comic_manager.view;
 
+import edu.westga.cs1302.comic_manager.model.Collection;
 import edu.westga.cs1302.comic_manager.model.Comic;
-import edu.westga.cs1302.comic_manager.viewmodel.*;
+import edu.westga.cs1302.comic_manager.viewmodel.ViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.util.converter.NumberStringConverter;
 
 /**
  * Codebehind for the MainWindow of the Application.
@@ -21,7 +20,7 @@ public class MainWindow {
 	@FXML
 	private TextField collectionNameField;
 	@FXML
-	private ListView<String> collectionsListView;
+	private ListView<Collection> collectionsListView;
 	@FXML
 	private Button addCollectionButton;
 	@FXML
@@ -48,32 +47,32 @@ public class MainWindow {
 	 */
 	@FXML
 	void initialize() {
-		viewModel = new ViewModel();
-		collectionNameField.textProperty().bindBidirectional(viewModel.collectionNameProperty());
+		this.viewModel = new ViewModel();
+		this.collectionNameField.textProperty().bindBidirectional(this.viewModel.collectionNameProperty());
 
-		collectionsListView.setItems(viewModel.collectionsProperty());
+		this.collectionsListView.setItems(this.viewModel.collectionsProperty());
 
-		addCollectionButton.setOnAction(event -> viewModel.addCollection());
+		this.addCollectionButton.setOnAction(event -> this.viewModel.addCollection());
 
-		removeCollectionButton.setOnAction(event -> viewModel.removeCollection());
+		this.removeCollectionButton.setOnAction(event -> this.viewModel.removeCollection());
 
-		addCollectionButton.disableProperty().bind(viewModel.collectionNameProperty().isEmpty());
+		this.addCollectionButton.disableProperty().bind(this.viewModel.collectionNameProperty().isEmpty());
 
-		addComicButton.setOnAction(e -> viewModel.addComic());
+		this.addComicButton.setOnAction(e -> this.viewModel.addComic());
 
-		comicTitleField.textProperty().bindBidirectional(viewModel.comicTitleProperty());
+		this.comicTitleField.textProperty().bindBidirectional(this.viewModel.comicTitleProperty());
 
-		comicIssueField.textProperty().bindBidirectional(viewModel.comicIssueNumberProperty(),
+		this.comicIssueField.textProperty().bindBidirectional(this.viewModel.comicIssueNumberProperty(),
 				new NumberStringConverter());
 
-		comicListView.setItems(viewModel.comicsProperty());
+		this.comicListView.setItems(this.viewModel.comicsProperty());
 
-		addComicButton.setOnAction(e -> viewModel.addComic());
+		this.addComicButton.setOnAction(e -> this.viewModel.addComic());
 
-		addComicButton.disableProperty()
-				.bind(viewModel.comicTitleProperty().isEmpty().or(viewModel.comicIssueNumberProperty().isEqualTo(0)));
+		this.addComicButton.disableProperty()
+				.bind(this.viewModel.comicTitleProperty().isEmpty().or(this.viewModel.comicIssueNumberProperty().isEqualTo(0)));
 		
-		findComicButton.setOnAction(e -> viewModel.findComic());
+		this.findComicButton.setOnAction(e -> this.viewModel.findComic());
 	}
 
 }
