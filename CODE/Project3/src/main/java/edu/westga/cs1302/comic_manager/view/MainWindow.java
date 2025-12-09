@@ -37,13 +37,27 @@ public class MainWindow {
     void initialize() {
     	viewModel =  new ViewModel();
     	collectionNameField.textProperty().bindBidirectional(viewModel.collectionNameProperty());
+    	
     	collectionsListView.setItems(viewModel.collectionsProperty());
+    	
     	addCollectionButton.setOnAction(event -> 
     	viewModel.addCollection());
+    	
     	removeCollectionButton.setOnAction(event -> 
     	viewModel.removeCollection());
+    	
     	addCollectionButton.disableProperty()
     	.bind(viewModel.collectionNameProperty().isEmpty());
+    	
+    	addComicButton.setOnAction(e -> viewModel.addComic());
+    	
+    	comicTitleField.textProperty().bindBidirectional(viewModel.comicTitleProperty());
+    	
+    	comicIssueField.textProperty().bindBidirectional(
+    	viewModel.comicIssueNumberProperty(), new NumberStringConverter());
+    	
+    	comicListView.setItems(viewModel.comicsProperty());
+    	
     	addComicButton.setOnAction(e -> viewModel.addComic());
     }
     	
