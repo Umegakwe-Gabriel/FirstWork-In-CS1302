@@ -5,7 +5,9 @@ import java.util.Map;
 
 import edu.westga.cs1302.comic_manager.model.*;
 import edu.westga.cs1302.comic_manager.model.Collection;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -22,11 +24,9 @@ import javafx.collections.ObservableList;
  * @version Fall 2025
  */
 public class ViewModel {
-//	private Collection collection;
-//	private StringProperty title;
-//	private StringProperty author;
-//	private StringProperty genre;
-	
+	private StringProperty comicTitle;
+	private IntegerProperty comicIssueNumber;
+	private ListProperty<Comic> comics;
 	private StringProperty collectionName;
 	private ListProperty<Collection> collections;
 	private Map<String, Collection> collectionsByName;
@@ -35,6 +35,29 @@ public class ViewModel {
 		this.collectionName = new SimpleStringProperty("");
 		this.collections = new SimpleListProperty<>(FXCollections.observableArrayList());
 		this.collectionsByName = new HashMap<>();
+		this.comicTitle = new SimpleStringProperty("");
+		this.comicIssueNumber = new SimpleIntegerProperty(0);
+		this.comics = new SimpleListProperty<>(FXCollections.observableArrayList());
+	}
+	
+	public StringProperty comicTitleProperty() {
+		return comicTitle;
+	}
+	
+	public IntegerProperty comicIssueNumberProperty() {
+		return comicIssueNumber;
+	}
+	
+	public ListProperty<Comic> comicsProperty() {
+		return comics;
+	}
+	
+	public void addComic() {
+		String title = comicTitle.get();
+		int issueNumber = comicIssueNumber.get();
+		
+		Comic newComic = new Comic(title, issueNumber);
+		comics.add(newComic);
 	}
 	
 	public StringProperty collectionNameProperty() {
