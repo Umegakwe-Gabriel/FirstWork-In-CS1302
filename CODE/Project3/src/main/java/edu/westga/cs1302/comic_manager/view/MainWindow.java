@@ -31,6 +31,8 @@ public class MainWindow {
     @FXML
     void initialize() {
     	viewModel =  new ViewModel();
+    	collectionNameField.textProperty().bindBidirectional(viewModel.collectionNameProperty());
+    	collectionsListView.setItems(viewModel.collectionsProperty());
     	addCollectionButton.setOnAction(event -> 
     	viewModel.addCollection());
     	removeCollectionButton.setOnAction(event -> 
