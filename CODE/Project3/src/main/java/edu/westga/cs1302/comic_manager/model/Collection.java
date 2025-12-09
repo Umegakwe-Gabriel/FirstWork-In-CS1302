@@ -1,4 +1,4 @@
-package edu.westga.cs1302.contact_manager.model;
+package edu.westga.cs1302.comic_manager.model;
 
 import java.util.ArrayList;
 import java.util.List;

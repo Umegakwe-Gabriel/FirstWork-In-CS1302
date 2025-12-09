@@ -1,6 +1,6 @@
-package edu.westga.cs1302.contact_manager.view;
+package edu.westga.cs1302.comic_manager.view;
 
-import edu.westga.cs1302.contact_manager.viewmodel.*;
+import edu.westga.cs1302.comic_manager.viewmodel.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

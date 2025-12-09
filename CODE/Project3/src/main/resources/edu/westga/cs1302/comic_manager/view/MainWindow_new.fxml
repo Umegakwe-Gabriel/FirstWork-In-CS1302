@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="366.0" minWidth="215.0" prefHeight="366.0" prefWidth="215.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.contact_manager.view.MainWindow">
+<AnchorPane minHeight="366.0" minWidth="215.0" prefHeight="366.0" prefWidth="215.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.comic_manager.view.MainWindow">
    <children>
       <TextField fx:id="collectionNameField" layoutX="33.0" layoutY="28.0" />
       <Button fx:id="addCollectionButton" layoutX="60.0" layoutY="61.0" mnemonicParsing="false" text="Add Collection" />

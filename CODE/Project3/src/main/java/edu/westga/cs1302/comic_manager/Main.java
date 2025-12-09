@@ -1,4 +1,4 @@
-package edu.westga.cs1302.contact_manager;
+package edu.westga.cs1302.comic_manager;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  * @version Fall 2025
  */
 public class Main extends Application {
-	private static final String WINDOW_TITLE = "Contact Manager";
+	private static final String WINDOW_TITLE = "Comic Manager";
 	private static final String GUI_RESOURCE = "view/MainWindow_new.fxml";
 
 	/**
