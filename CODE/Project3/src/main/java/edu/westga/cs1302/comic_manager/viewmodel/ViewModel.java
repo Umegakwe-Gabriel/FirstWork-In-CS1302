@@ -30,6 +30,8 @@ public class ViewModel {
 	private StringProperty collectionName;
 	private ListProperty<Collection> collections;
 	private Map<String, Collection> collectionsByName;
+	private Map<String, Comic> comicsByTitle;
+	private Map<Integer, Comic> comicByIssue;
 	
 	public ViewModel() {
 		this.collectionName = new SimpleStringProperty("");
@@ -38,6 +40,8 @@ public class ViewModel {
 		this.comicTitle = new SimpleStringProperty("");
 		this.comicIssueNumber = new SimpleIntegerProperty(0);
 		this.comics = new SimpleListProperty<>(FXCollections.observableArrayList());
+		this.comicsByTitle = new HashMap<>();
+		this.comicByIssue = new HashMap<>();
 	}
 	
 	public StringProperty comicTitleProperty() {
@@ -82,5 +86,24 @@ public class ViewModel {
 		Collection selectedCollection = collections.get(0);
 		collections.remove(selectedCollection);
 		collectionsByName.remove(selectedCollection.getName());
+	}
+	
+	public String findComic() {
+		String criteria = searchField.getText();
+		Comic foundComic = comicsByTitle.get(criteria);
+		if(foundComic == null) {
+			try {
+				int issueNumber = Integer.parseInt(criteria);
+				foundComic = comicsByIssue.get(issueNumber);
+			} catch (NumberFormatExcpetion e) {
+			
+			}
+		}
+		
+		if (foundComic != null) {
+			return foundComic.toString();
+		} else {
+			return "No comic found.";
+		}
 	}
 }
