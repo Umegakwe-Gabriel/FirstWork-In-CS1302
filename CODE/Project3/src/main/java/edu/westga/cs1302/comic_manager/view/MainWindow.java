@@ -59,6 +59,10 @@ public class MainWindow {
     	comicListView.setItems(viewModel.comicsProperty());
     	
     	addComicButton.setOnAction(e -> viewModel.addComic());
+    	
+    	addComicButton.disableProperty().bind(
+    			viewModel.comicTitleProperty().isEmpty()
+    			.or(viewModel.comicIssueNumberProperty().isEqualTo(0)));
     }
     	
 }
