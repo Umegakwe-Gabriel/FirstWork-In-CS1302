@@ -29,12 +29,12 @@ public class Collection {
 		return comics;
 	}
 	
-	public void addContact(Comic comic) {
-		comics.add(comic);
+	public void addComic(Comic comic) {
+		this.comics.add(comic);
 	}
 	
 	public void removeComic(Comic comic) {
-		comics.remove(comic);
+		this.comics.remove(comic);
 	}
 	
 }

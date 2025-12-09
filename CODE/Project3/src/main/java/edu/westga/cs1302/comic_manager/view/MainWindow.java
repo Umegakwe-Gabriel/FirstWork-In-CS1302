@@ -1,5 +1,6 @@
 package edu.westga.cs1302.comic_manager.view;
 
+import edu.westga.cs1302.comic_manager.model.Comic;
 import edu.westga.cs1302.comic_manager.viewmodel.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
