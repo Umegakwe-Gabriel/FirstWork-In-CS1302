@@ -5,11 +5,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="366.0" minWidth="215.0" prefHeight="366.0" prefWidth="215.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.comic_manager.view.MainWindow">
+<AnchorPane minHeight="366.0" minWidth="215.0" prefHeight="366.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.comic_manager.view.MainWindow">
    <children>
-      <TextField fx:id="collectionNameField" layoutX="33.0" layoutY="28.0" />
+      <TextField fx:id="collectionNameField" layoutX="34.0" layoutY="26.0" />
       <Button fx:id="addCollectionButton" layoutX="60.0" layoutY="61.0" mnemonicParsing="false" text="Add Collection" />
       <ListView fx:id="collectionsListView" layoutX="18.0" layoutY="100.0" prefHeight="167.0" prefWidth="179.0" />
       <Button fx:id="removeCollectionButton" layoutX="50.0" layoutY="286.0" mnemonicParsing="false" text="Remove Collection" />
+      <TextField fx:id="comicTitleField" layoutX="216.0" layoutY="26.0" promptText="Comic Title" />
+      <TextField fx:id="comicIssueField" layoutX="216.0" layoutY="72.0" promptText="Comic Field" />
+      <Button fx:id="addComicButton" layoutX="257.0" layoutY="117.0" mnemonicParsing="false" text="Add Comic" />
+      <ListView fx:id="comicListView" layoutX="210.0" layoutY="152.0" prefHeight="175.0" prefWidth="162.0" />
    </children>
 </AnchorPane>

@@ -19,7 +19,11 @@ public class MainWindow {
 	@FXML private TextField collectionNameField;
 	@FXML private ListView<String> collectionsListView;
 	@FXML private Button addCollectionButton;
-	@FXML private Button removeCollectionButton;
+	@FXML private Button removeCollectionButton; 
+	@FXML private TextField comicTitleField;
+	@FXML private TextField comicIssueField;
+	@FXML private Button addComicButton;
+	@FXML private ListView<Comic> comicListView;
 	
 	private ViewModel viewModel;
     
@@ -37,6 +41,9 @@ public class MainWindow {
     	viewModel.addCollection());
     	removeCollectionButton.setOnAction(event -> 
     	viewModel.removeCollection());
+    	addCollectionButton.disableProperty()
+    	.bind(viewModel.collectionNameProperty().isEmpty());
+    	addComicButton.setOnAction(e -> viewModel.addComic());
     }
     	
 }
